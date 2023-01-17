@@ -2,16 +2,12 @@ package hust.hedspi.crawling;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
@@ -52,6 +48,8 @@ public class Festival {
 			obj.put("historicalFigure", fest.getHistoricalFigureList());
 			arr.add(obj);
 		}
+		
+//Write JSON file to the root folder	
 		try (FileWriter file = new FileWriter("CulturalFestivals.json")) {
             //We can write any JSONArray or JSONObject instance to the file
             file.write(arr.toJSONString()); 

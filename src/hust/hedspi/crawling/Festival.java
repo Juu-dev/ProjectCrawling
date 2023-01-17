@@ -31,12 +31,12 @@ public class Festival {
 		List<CulturalFestival> CulturalFestivals  = new ArrayList<CulturalFestival>(); 
 		
 		for (Element tr : rawTr) {
-			CulturalFestival temp = new CulturalFestival(query, query, query, null);
-			temp.setDate(tr.child(0).text());
-			temp.setLocation(tr.child(1).text());
-			temp.setName(tr.child(2).text());
-			temp.setHistoricalFigureList(new ArrayList<String>(Arrays.asList(tr.child(4).text().split(","))));
-			CulturalFestivals.add(temp);
+			CulturalFestivals.add(new CulturalFestival(
+					tr.child(0).text(), 
+					tr.child(1).text(), 
+					tr.child(2).text(), 
+					new ArrayList<String>(Arrays.asList(tr.child(4).text().split(","))))
+			);
 		}
 		
 		JSONArray arr = new JSONArray();
@@ -49,9 +49,8 @@ public class Festival {
 			arr.add(obj);
 		}
 		
-//Write JSON file to the root folder	
+//		Write JSON file to the root folder	
 		try (FileWriter file = new FileWriter("CulturalFestivals.json")) {
-            //We can write any JSONArray or JSONObject instance to the file
             file.write(arr.toJSONString()); 
             file.flush();
  

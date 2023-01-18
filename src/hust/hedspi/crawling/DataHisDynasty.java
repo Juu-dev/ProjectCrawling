@@ -6,7 +6,6 @@ public class DataHisDynasty {
 	String url = "https://openedu.vn/Kho-tri-thuc/Tom-luoc-lich-su-Viet-Nam-qua-cac-thoi-dai";
 	String query = "div.noidung1 > p > span#^docs-internal-guid > span";
 	
-	// Method
 	public void main() {
 		Crawling data = new Crawling();
 		
@@ -15,6 +14,22 @@ public class DataHisDynasty {
 		Elements resultQuery =  data.crawlingData(query);
 		
 		System.out.println(resultQuery);
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getQuery() {
+		return query;
+	}
+
+	public void setQuery(String query) {
+		this.query = query;
 	}
 	
 	

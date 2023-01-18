@@ -5,13 +5,29 @@ import java.util.List;
 
 public class HistoricalEvents {
 	String name;
+	public String getName() {
+		return name;
+	}
+	public String getDate() {
+		return date;
+	}
+	public String getContent() {
+		return content;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public String getHistoricalFigure() {
+		return historicalFigure;
+	}
 	String date;
 	String content;
 	String location;
-	List<String> historicalFigure = new ArrayList<String>();
+//	List<String> historicalFigure = new ArrayList<String>();
+	String historicalFigure;
 
 	// Contructor
-	public HistoricalEvents(String name, String date, String content, String location, List<String> historicalFigure) {
+	public HistoricalEvents(String name, String date,String location, String content,  String historicalFigure) {
 		super();
 		this.name = name;
 		this.date = date;
@@ -19,52 +35,8 @@ public class HistoricalEvents {
 		this.location = location;
 		this.historicalFigure = historicalFigure;
 	}
-
-	// Getter and setter
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public List<String> getHistoricalFigure() {
-		return historicalFigure;
-	}
-
-	public void setHistoricalFigure(List<String> historicalFigure) {
-		this.historicalFigure = historicalFigure;
-	}
-	
-	
 	// Methods
 	void getData() {
-		
 	}
 	
 }

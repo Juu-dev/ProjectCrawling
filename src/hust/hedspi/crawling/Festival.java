@@ -32,9 +32,9 @@ public class Festival {
 		
 		for (Element tr : rawTr) {
 			CulturalFestivals.add(new CulturalFestival(
+					tr.child(2).text(), 
 					tr.child(0).text(), 
 					tr.child(1).text(), 
-					tr.child(2).text(), 
 					new ArrayList<String>(Arrays.asList(tr.child(4).text().split(","))))
 			);
 		}

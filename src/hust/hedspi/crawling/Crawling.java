@@ -1,5 +1,4 @@
 package hust.hedspi.crawling;
-import hust.hedspi.crawling.DataHisDynasty;
 import hust.hedspi.base.HistoricalEvents;
 
 import org.json.simple.JSONArray;

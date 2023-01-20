@@ -17,17 +17,16 @@ public class HistoricalEvents {
 	public String getLocation() {
 		return location;
 	}
-	public String getHistoricalFigure() {
+	public List<String> getHistoricalFigure() {
 		return historicalFigure;
 	}
 	String date;
 	String content;
 	String location;
-//	List<String> historicalFigure = new ArrayList<String>();
-	String historicalFigure;
+	List<String> historicalFigure = new ArrayList<String>();
 
 	// Contructor
-	public HistoricalEvents(String name, String date,String location, String content,  String historicalFigure) {
+	public HistoricalEvents(String name, String date,String location, String content,  List<String> historicalFigure) {
 		super();
 		this.name = name;
 		this.date = date;

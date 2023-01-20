@@ -2,6 +2,8 @@ package hust.hedspi.crawling;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -10,7 +12,6 @@ import org.jsoup.select.Elements;
 
 import hust.hedspi.base.HistoricalEvents;
 public class DataHistoricalEvents {
-	static int id=0;
 	private static String urls = "https://nguoikesu.com/tu-lieu/quan-su?filter_tag[0]=&start=";
 //	private static String urls = "https://vi.wikipedia.org/wiki/Danh_s%C3%A1ch_tr%E1%BA%ADn_%C4%91%C3%A1nh_trong_l%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam";
 
@@ -30,11 +31,11 @@ public class DataHistoricalEvents {
 	private static String query4 = "table tbody tbody tr:nth-child(3) td:nth-child(2)";
 	
 //	private static String query5 = "td[style~=width:50%;border-right:1px dotted #aaa]";
-	private static String query5 = "tbody tr:nth-child(8)";
+	private static String query5 = "tbody tr:nth-child(7)";
 	private static JSONArray employeeList = new JSONArray();
 	
-	public static String DataEdit(Elements data) {
-		StringBuffer data1 = new StringBuffer(data.text());
+	public static String DataEdit(String data) {
+		StringBuffer data1 = new StringBuffer(data);
 		String time1 = new String(data1);
   		for (int i = 0; i< data1.length();i++) { 
   			if (Character.compare(data1.charAt(i),'<') == 0) {
@@ -49,8 +50,32 @@ public class DataHistoricalEvents {
   		}
 
   		time1=time1.replaceAll(">", "");
-  		time1=time1.replaceAll("\u2013", "");
+  		time1=time1.replaceAll(" &nbsp", "");
+  		time1=time1.replaceAll("&nbsp", "");
+  		time1=time1.replaceAll("Chỉ huy chính:", "");
+  		time1=time1.replaceAll("\\n \\n  \\n ", "");
+  		time1=time1.replaceAll("\\n  \\n   \\n   ", "");
+  		time1=time1.replaceAll("\n", "");
+  		return time1;
+	}
 	
+	public static List<String> DataEditList(String data) {
+		StringBuffer data1 = new StringBuffer(data);
+		int j=0;
+		List<String> time1 = new ArrayList<String>();
+  		for(int i=0; i < data1.length();i++) {
+  			if ((Character.compare(data1.charAt(i),'<') == 0) && (Character.compare(data1.charAt(i+1),'b') == 0) && (Character.compare(data1.charAt(i+2),'r') == 0)) {
+  				String dataInsert = new String(data1);
+  				time1.add(DataEdit(dataInsert.substring(j, i)));
+  				j=i;
+  			}
+  			if ((Character.compare(data1.charAt(i),'<') == 0) && (Character.compare(data1.charAt(i+1),'t') == 0) && (Character.compare(data1.charAt(i+2),'d') == 0) && j>0) {
+  				String dataInsert = new String(data1);
+  				time1.add(DataEdit(dataInsert.substring(j, i)));
+  				j=i;
+  			}
+  		}
+  		
   		return time1;
 	}
 	
@@ -58,9 +83,7 @@ public class DataHistoricalEvents {
 		Crawling data = new Crawling();
 		for(int i=0; i<=70;i+=5)
 		{
-			data.connectToWeb(urls+String.valueOf(i));
-//			System.out.println(urls+String.valueOf(i));
-		
+			data.connectToWeb(urls+String.valueOf(i));		
 			Elements historicalEvents =  data.crawlingData(query);
 			for (Element historicalEvent : historicalEvents)
 			{
@@ -72,12 +95,20 @@ public class DataHistoricalEvents {
 	            Elements time = data.crawlingData(query2);
 	            Elements location = data.crawlingData(query3);
 	            Elements content = data.crawlingData(query4);
-	            Elements historicalFigure = data.crawlingData(query5);
-	            
-	            HistoricalEvents emp = new HistoricalEvents(name.text(),DataEdit(time),DataEdit(location),DataEdit(content),DataEdit(historicalFigure));
-//	            System.out.println(time.text());
+	            Elements historicalFigure = null;
+	            Elements check = data.crawlingData(query5);
+	            Elements check1 = data.crawlingData("tbody tbody tr:nth-child(6)");
+	            if (DataEdit(check1.text()).equals("Chỉ huy"))
+	            {
+	            	historicalFigure = data.crawlingData("tbody tr:nth-child(7)");
+	            }
+	            if (DataEdit(check.text()).equals("Chỉ huy"))
+	            {
+	            	historicalFigure = data.crawlingData("tbody tr:nth-child(8)");
+	            }
+	            else historicalFigure = data.crawlingData(query5);
+	            HistoricalEvents emp = new HistoricalEvents(name.text(),DataEdit(time.text()),DataEdit(location.text()),DataEdit(content.text()),DataEditList(historicalFigure.html()));
 	            JSONObject employeeDetails = new JSONObject();
-	            employeeDetails.put("id",String.valueOf(id++));
 	            employeeDetails.put("name", emp.getName());
 	            employeeDetails.put("time", emp.getDate());
 	            employeeDetails.put("location", emp.getLocation());

@@ -15,9 +15,7 @@ public class Crawling {
 	public void connectToWeb(String url) {
         try {
             doc = Jsoup
-                    .connect(url)
-                    .userAgent("Jsoup client")
-                    .timeout(20000).get();
+                    .connect(url).get();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -25,7 +23,8 @@ public class Crawling {
 	
 	// Once connected, call this methods to collect data
     public Elements crawlingData(String query) {
-            Elements lstArticles = doc.select(query);
+//            Elements lstArticles = doc != null ? doc.select(query) : null ;
+    		Elements lstArticles = doc.select(query);
 			return lstArticles;
     }
 }

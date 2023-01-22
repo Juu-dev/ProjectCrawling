@@ -1,10 +1,17 @@
 package hust.hedspi.crawling;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import hust.hedspi.base.hisPeriod.HistoricalChildPeriod;
 import hust.hedspi.base.hisPeriod.HistoricalDynasty;
@@ -18,7 +25,7 @@ public class DataHisDynasty {
 	static HistoricalPeriod hisPeriod5 = new HistoricalPeriod("Thời kỳ hiện đại");
 	
 	// method crawling data thoi ki tien su
-	public static void dataPrehistoric() {
+	public void dataPrehistoric() {
 		List<HistoricalChildPeriod> childPeriodList = new ArrayList<HistoricalChildPeriod>();
 		
 		String url = "https://vi.wikipedia.org/wiki/L%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam#Th%E1%BB%9Di_k%E1%BB%B3_ti%E1%BB%81n_s%E1%BB%AD";
@@ -42,7 +49,7 @@ public class DataHisDynasty {
 	}
 
 	// method crawling data thoi ki co dai
-	public static void dataAncient() {
+	public void dataAncient() {
 		List<HistoricalChildPeriod> childPeriodList = new ArrayList<HistoricalChildPeriod>();
 		List<HistoricalDynasty> dynastyList = new ArrayList<HistoricalDynasty>();
 		
@@ -50,7 +57,7 @@ public class DataHisDynasty {
 		String query1 = "h2#thoi-ky-co-dai-2879-111-tcn ~ p > strong > em";
 		String query2 = "h2#thoi-ky-co-dai-2879-111-tcn + p + p";
 		String query3 = "h2#thoi-ky-co-dai-2879-111-tcn + p + p + p";
-		String query4 = "h2#thoi-ky-co-dai-2879-111-tcn + p + p + p + p";
+		String query4 = "h2#thoi-ky-co-dai-2879-111-tcn + p + p + p + p + p";
 		
 		Crawling data = new Crawling();
 		
@@ -110,7 +117,7 @@ public class DataHisDynasty {
 	}
 	
 	// method crawling data thoi ki bac thuoc
-	public static void dataColonyTime(String[] args) {
+	public void dataColonyTime() {
 		List<HistoricalChildPeriod> childPeriodList = new ArrayList<HistoricalChildPeriod>();
 		
 		String url = "https://accgroup.vn/lich-su-viet-nam-qua-cac-thoi-ky/#thoi-bac-thuoc-111-tcn-938";
@@ -133,8 +140,6 @@ public class DataHisDynasty {
             String str = element.text();
             nameChildPeriod[i] = str.substring(0, str.indexOf("("));
             yearChildPeriod[i] = str.substring(str.indexOf("(")+1, str.indexOf(")"));
-            System.out.println(nameChildPeriod[i]);
-            System.out.println(yearChildPeriod[i]);
             i++;
             if (i == 4) break;
         }
@@ -145,8 +150,6 @@ public class DataHisDynasty {
             String str = element.text();
             nameChildPeriod[i] = str.substring(0, str.indexOf("("));
             yearChildPeriod[i] = str.substring(str.indexOf("(")+1, str.indexOf(")"));
-            System.out.println(nameChildPeriod[i]);
-            System.out.println(yearChildPeriod[i]);
             i++;
             if (i == 6) break;
         }
@@ -207,11 +210,9 @@ public class DataHisDynasty {
      	hisPeriod3.setChildPeriodList(childPeriodList);
 	}
 	
-	
-	// Method crawling data 10 trieu dai phong kien viet nam
-	public static void dataMonarchyPeriod() {
+	// Method crawling data thoi ky quan chu
+	public void dataMonarchyPeriod() {
 		List<HistoricalChildPeriod> childPeriodList = new ArrayList<HistoricalChildPeriod>();
-		List<HistoricalDynasty> dynastyList = new ArrayList<HistoricalDynasty>();
 		
 		String url1 = "https://accgroup.vn/lich-su-viet-nam-qua-cac-thoi-ky/#thoi-bac-thuoc-111-tcn-938";
 		String query1 = "h2#thoi-ky-quan-chu-939-1945 ~ p > strong > em";
@@ -281,7 +282,7 @@ public class DataHisDynasty {
 		String[] nameDynasties = {"", "", "", "", "", "", "", "", "", ""};
 		String[] yearDynasties = {"", "", "", "", "", "", "", "", "", ""};
 		String[] contentDynasties = {"", "", "", "", "", "", "", "", "", ""};
-		String[] nameKingsDynasties = {"", "", "", "", "", "", "", "", "", ""};
+		String[] nameCountryDynasties = {"", "", "", "", "", "", "", "", "", ""};
 		i=0;
 		
         // Query 7 : name and year of dynasty
@@ -304,9 +305,9 @@ public class DataHisDynasty {
 		i = 0;
         resultQuery =  data.crawlingData(query8);
         for (Element element : resultQuery) {
-            String nameKings = element.text();
-            nameKings = nameKings.substring(nameKings.indexOf(':')+1, nameKings.length());
-            nameKingsDynasties[i] = nameKingsDynasties[i].concat(nameKings);
+            String nameCountry = element.text();
+            nameCountry = nameCountry.substring(nameCountry.indexOf(':')+1, nameCountry.length());
+            nameCountryDynasties[i] = nameCountryDynasties[i].concat(nameCountry);
             i++;
         }
 		
@@ -319,94 +320,195 @@ public class DataHisDynasty {
             i++;
         }
         
+        // 
+        for (int ii=0; ii<5; ii++) {
+        	switch (ii) {
+			case 0: {
+				HistoricalChildPeriod hisChildPeriod = new HistoricalChildPeriod(nameChildPeriod[ii], yearChildPeriod[ii], contentChildPeriod[ii]);
+				List<HistoricalDynasty> dynastyList = new ArrayList<HistoricalDynasty>();
+				for (int jj = 0; jj < 6; jj++) {
+					HistoricalDynasty hisDynasty = new HistoricalDynasty(nameDynasties[jj], yearDynasties[jj], contentDynasties[jj], nameCountryDynasties[jj]);
+					dynastyList.add(hisDynasty);
+				}
+				hisChildPeriod.setDynastyList(dynastyList);
+				childPeriodList.add(hisChildPeriod);
+				break;
+			}
+			case 1: {
+				HistoricalChildPeriod hisChildPeriod = new HistoricalChildPeriod(nameChildPeriod[ii], yearChildPeriod[ii], contentChildPeriod[ii]);
+				childPeriodList.add(hisChildPeriod);	
+				break;
+			}
+			case 2: {
+				HistoricalChildPeriod hisChildPeriod = new HistoricalChildPeriod(nameChildPeriod[ii], yearChildPeriod[ii], contentChildPeriod[ii]);
+				List<HistoricalDynasty> dynastyList = new ArrayList<HistoricalDynasty>();
+				for (int jj = 6; jj <7 ; jj++) {
+					HistoricalDynasty hisDynasty = new HistoricalDynasty(nameDynasties[jj], yearDynasties[jj], contentDynasties[jj], nameCountryDynasties[jj]);
+					dynastyList.add(hisDynasty);
+				}
+				hisChildPeriod.setDynastyList(dynastyList);
+				childPeriodList.add(hisChildPeriod);
+				break;
+			}
+			case 3: {
+				HistoricalChildPeriod hisChildPeriod = new HistoricalChildPeriod(nameChildPeriod[ii], yearChildPeriod[ii], contentChildPeriod[ii]);
+				List<HistoricalDynasty> dynastyList = new ArrayList<HistoricalDynasty>();
+				for (int jj = 7; jj <8 ; jj++) {
+					HistoricalDynasty hisDynasty = new HistoricalDynasty(nameDynasties[jj], yearDynasties[jj], contentDynasties[jj], nameCountryDynasties[jj]);
+					dynastyList.add(hisDynasty);
+				}
+				hisChildPeriod.setDynastyList(dynastyList);
+				childPeriodList.add(hisChildPeriod);
+				break;
+			}
+			case 4: {
+				HistoricalChildPeriod hisChildPeriod = new HistoricalChildPeriod(nameChildPeriod[ii], yearChildPeriod[ii], contentChildPeriod[ii]);
+				List<HistoricalDynasty> dynastyList = new ArrayList<HistoricalDynasty>();
+				for (int jj = 8; jj <10 ; jj++) {
+					HistoricalDynasty hisDynasty = new HistoricalDynasty(nameDynasties[jj], yearDynasties[jj], contentDynasties[jj], nameCountryDynasties[jj]);
+					dynastyList.add(hisDynasty);
+				}
+				hisChildPeriod.setDynastyList(dynastyList);
+				childPeriodList.add(hisChildPeriod);
+				break;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + ii);
+			}
+        }
         
-        
-        
+        // complete hisPeriod4
+        hisPeriod4.setChildPeriodList(childPeriodList);
 	}
 	
-	
-	
-	
 	// Method crawling data thoi ky hien dai
-//	public static void main(String[] args) {
-//		String url = "https://accgroup.vn/lich-su-viet-nam-qua-cac-thoi-ky/#thoi-bac-thuoc-111-tcn-938";
-//		String query1 = "h2#thoi-ky-hien-dai-1858-nay ~ p > strong > em";
-//		String query2 = "h2#thoi-ky-hien-dai-1858-nay ~ p";
-//		
-//		Crawling data = new Crawling();
-//		
-//		data.connectToWeb(url); 
-//		
-//		String[] childPeriod = {"", "", "", "", "", ""};
-//		String[] yearChildPeriod = {"", "", "", "", "", ""};
-//		String[] contentChildPeriod = {"", "", "", "", "", ""};
-//		int i=0, j=0;
-//		
-//        // Query 1 : name child period
-//		Elements resultQuery =  data.crawlingData(query1);
-//		for (Element element : resultQuery) {
-//            if (i != 1) {
-//            	String str = element.text();
-//                childPeriod[i] = str.substring(0, str.indexOf("("));
-//                yearChildPeriod[i] = str.substring(str.indexOf("(")+1, str.indexOf(")"));
-//                System.out.println(childPeriod[i]);
-//                System.out.println(yearChildPeriod[i]);
-//            }
-//            else {
-//            	String str = element.text();
-//                childPeriod[i] = str;
-//                yearChildPeriod[i] = "1945-1976";
-//                System.out.println(childPeriod[i]);
-//                System.out.println(yearChildPeriod[i]);
-//            }
-//            i++;
-//            if (i == 4) break;
-//        }
-//		// Query 2 : content of each period
-//		resultQuery =  data.crawlingData(query2);
-//        for (Element element : resultQuery) {
-//        	j++;
-//
-//        	switch (j) {
-//			case 2: {
-//				String str = element.text();
-//				contentChildPeriod[0] = contentChildPeriod[0].concat(str);
-//				break;
-//			}
-//			case 5: {
-//				String str = element.text();
-//				contentChildPeriod[1] = contentChildPeriod[1].concat(str);
-//				break;
-//			}
-//			case 7:
-//			case 8:
-//			case 9: {
-//				String str = element.text();
-//				contentChildPeriod[2] = contentChildPeriod[2].concat(str);
-//				break;
-//			}
-//			case 11: 
-//			case 12:
-//			case 13: {
-//				String str = element.text();
-//				contentChildPeriod[3] = contentChildPeriod[3].concat(str);
-//				break;
-//			}
-//			case 14: 
-//				break;
-//			}
-//        	
-//        	if (j == 14) break;
-//        }
-//        
-//        for (int jj=0; jj<4; jj++) {
-//        	System.out.println(contentChildPeriod[jj]);
-//        	System.out.println();
-//        }
-//	}
-
-	public static void main(String[] args) {
+	public void dataModernPeriod() {
+		List<HistoricalChildPeriod> childPeriodList = new ArrayList<HistoricalChildPeriod>();
 		
+		String url = "https://accgroup.vn/lich-su-viet-nam-qua-cac-thoi-ky/#thoi-bac-thuoc-111-tcn-938";
+		String query1 = "h2#thoi-ky-hien-dai-1858-nay ~ p > strong > em";
+		String query2 = "h2#thoi-ky-hien-dai-1858-nay ~ p";
+		
+		Crawling data = new Crawling();
+		
+		data.connectToWeb(url); 
+		
+		String[] nameChildPeriod = {"", "", "", "", "", ""};
+		String[] yearChildPeriod = {"", "", "", "", "", ""};
+		String[] contentChildPeriod = {"", "", "", "", "", ""};
+		int i=0, j=0;
+		
+        // Query 1 : name and year child period
+		Elements resultQuery =  data.crawlingData(query1);
+		for (Element element : resultQuery) {
+            if (i != 1) {
+            	String str = element.text();
+            	nameChildPeriod[i] = str.substring(0, str.indexOf("("));
+                yearChildPeriod[i] = str.substring(str.indexOf("(")+1, str.indexOf(")"));
+            }
+            else {
+            	String str = element.text();
+            	nameChildPeriod[i] = str;
+                yearChildPeriod[i] = "1945-1976";
+            }
+            i++;
+            if (i == 4) break;
+        }
+		// Query 2 : content of each period
+		resultQuery =  data.crawlingData(query2);
+        for (Element element : resultQuery) {
+        	j++;
+
+        	switch (j) {
+			case 2: {
+				String str = element.text();
+				contentChildPeriod[0] = contentChildPeriod[0].concat(str);
+				break;
+			}
+			case 5: {
+				String str = element.text();
+				contentChildPeriod[1] = contentChildPeriod[1].concat(str);
+				break;
+			}
+			case 7:
+			case 8:
+			case 9: {
+				String str = element.text();
+				contentChildPeriod[2] = contentChildPeriod[2].concat(str);
+				break;
+			}
+			case 11: 
+			case 12:
+			case 13: {
+				String str = element.text();
+				contentChildPeriod[3] = contentChildPeriod[3].concat(str);
+				break;
+			}
+			case 14: 
+				break;
+			}
+        	
+        	if (j == 14) break;
+        }
+        
+        for (int jj=0; jj<4; jj++) {
+        	HistoricalChildPeriod hisChildPeriod = new HistoricalChildPeriod(nameChildPeriod[jj], yearChildPeriod[jj], contentChildPeriod[jj]);
+        	childPeriodList.add(hisChildPeriod);
+        }
+        
+     // complete hisPeriod5
+     		hisPeriod5.setChildPeriodList(childPeriodList);
+	}
+
+	// main fuction
+	public static void main(String[] args) {
+		List<HistoricalPeriod> HisVNPeriods = new ArrayList<HistoricalPeriod>();
+		
+		DataHisDynasty data = new DataHisDynasty();
+		
+		// crawling data
+		data.dataPrehistoric();
+		data.dataAncient();
+		data.dataColonyTime();
+		data.dataMonarchyPeriod();
+		data.dataModernPeriod();
+		
+		// add period to list period 
+		HisVNPeriods.add(hisPeriod1);
+		HisVNPeriods.add(hisPeriod2);
+		HisVNPeriods.add(hisPeriod3);
+		HisVNPeriods.add(hisPeriod4);
+		HisVNPeriods.add(hisPeriod5);
+
+		ObjectMapper mapper = new ObjectMapper();
+//        String jsonInString = null;
+        
+		// convert java object to json and save to json file
+        try {
+        	File file = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\crawling\\historical_periods.json");
+        	if (file.createNewFile()) {
+        	
+//            System.out.println("Chuyển đổi đối tượng thành chuỗi JSON:");
+//            jsonInString = mapper.writeValueAsString(hisPeriod1);
+//            System.out.println(jsonInString);
+//            System.out.println();
+ 
+//            System.out.println("Chuyển đổi đối tượng thành chuỗi JSON với Format:");
+//            jsonInString = mapper.writerWithDefaultPrettyPrinter()
+//                    .writeValueAsString(HisVNPeriods);
+//            System.out.println(jsonInString);
+        	
+//        	System.out.println("Lưu đối tượng dưới dạng json vào file json");
+        	mapper.writerWithDefaultPrettyPrinter()
+                    .writeValue(file, HisVNPeriods);
+        	}
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 	
 }

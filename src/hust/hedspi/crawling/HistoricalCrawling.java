@@ -48,13 +48,13 @@ public class HistoricalCrawling {
 				// Historical Dynasty
 //				dataHisDyn.crawlingAndSaveToFile(fileDyn);
 				// Historical Figures
-				dataHisFigs.crawlingAndSaveToFile(fileFigures);
+//				dataHisFigs.crawlingAndSaveToFile(fileFigures);
 				// Historical Festivals
-				dataCulFes.crawlingAndSaveToFile(fileFes);
+//				dataCulFes.crawlingAndSaveToFile(fileFes);
 				// Historical Events
 				dataHisEvents.crawlingAndSaveToFile(fileEvent);
 				// Historical Sites
-				dataHisSites.crawlingAndSaveToFile(fileSites);
+//				dataHisSites.crawlingAndSaveToFile(fileSites);
 				
 				
 		} catch (JsonGenerationException e) {

@@ -24,7 +24,6 @@ public class DataCulFestivals {
 	String query = "table.prettytable.wikitable tr";
 	
 	// Method
-//	@SuppressWarnings("unchecked")
 	public void crawlingAndSaveToFile(File file) throws Exception {
 		DataHisFigures figureList = new DataHisFigures();
 		

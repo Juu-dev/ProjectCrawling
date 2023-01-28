@@ -90,11 +90,5 @@ public class HistoricalEvent {
 
 	public void setFiguresList(List<HistoricalFigure> figuresList) {
 		this.figuresList = figuresList;
-	}
-
-	// Methods
-	void getData() {
-		
-	}
-	
+	}	
 }

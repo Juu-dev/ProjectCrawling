@@ -48,10 +48,6 @@ public class DataHistoricalEvents {
   		time1=time1.replaceAll("\\n \\n  \\n ", "");
   		time1=time1.replaceAll("\\n  \\n   \\n   ", "");
   		time1=time1.replaceAll("\n", "");
-  		time1=time1.replaceAll(".", "");
-  		time1=time1.replaceAll(";", "");
-  		time1=time1.replaceAll("†", "");
-  		time1=time1.replaceAll(":", "");
   		return time1.trim();
 	}
 	

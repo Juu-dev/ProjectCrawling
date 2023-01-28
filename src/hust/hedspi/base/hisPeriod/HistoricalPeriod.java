@@ -51,10 +51,13 @@ public class HistoricalPeriod {
 	}
 
 	// Methods
-	
-	
-	void getData() {
-		
+	public HistoricalChildPeriod searchChildPeriod(String input) {
+		for (HistoricalChildPeriod childPeriod: childPeriodList) {
+			if (childPeriod.getName().toLowerCase().contains(input.toLowerCase())) {
+				return childPeriod;
+			}
+		}
+		return null;
 	}
 
 		

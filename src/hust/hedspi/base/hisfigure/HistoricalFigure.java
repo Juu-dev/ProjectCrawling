@@ -15,19 +15,8 @@ public class HistoricalFigure {
 	String nameDynasty;
 	
 	// Contructor
-	
-	
-	public HistoricalFigure(String name, String date, String content, List<String> historicalFigureList,
-			String culturalFestival, String historicalEvents, Boolean isKing, String job) {
-		super();
-		this.name = name;
-		this.date = date;
-		this.content = content;
-		this.historicalFigureList = historicalFigureList;
-		this.culturalFestival = culturalFestival;
-		this.historicalEvents = historicalEvents;
-		this.isKing = isKing;
-		this.job = job;
+	public HistoricalFigure() {
+		
 	}
 	
 	public HistoricalFigure(String name, String content, Boolean isKing, String job) {
@@ -42,6 +31,33 @@ public class HistoricalFigure {
 		super();
 		this.name = name;
 		this.content = content;
+		this.isKing = isKing;
+		this.job = job;
+		this.nameDynasty = nameDynasty;
+	}
+	
+	public HistoricalFigure(String name, String date, String content, List<String> historicalFigureList,
+			String culturalFestival, String historicalEvents, Boolean isKing, String job) {
+		super();
+		this.name = name;
+		this.date = date;
+		this.content = content;
+		this.historicalFigureList = historicalFigureList;
+		this.culturalFestival = culturalFestival;
+		this.historicalEvents = historicalEvents;
+		this.isKing = isKing;
+		this.job = job;
+	}
+	
+	public HistoricalFigure(String name, String date, String content, List<String> historicalFigureList,
+			String culturalFestival, String historicalEvents, Boolean isKing, String job, String nameDynasty) {
+		super();
+		this.name = name;
+		this.date = date;
+		this.content = content;
+		this.historicalFigureList = historicalFigureList;
+		this.culturalFestival = culturalFestival;
+		this.historicalEvents = historicalEvents;
 		this.isKing = isKing;
 		this.job = job;
 		this.nameDynasty = nameDynasty;

@@ -22,4 +22,13 @@ public class HistoricalFigures {
 	public void addAllElement(List<HistoricalFigure> figure) {
 		hisVNFigures.addAll(figure);
 	}
+	
+	public HistoricalFigure searchFigure (String input) {
+		for (HistoricalFigure figure: hisVNFigures) {
+			if (figure.getName().toLowerCase().contains(input.toLowerCase())) {
+				return figure;
+			}
+		}
+		return null;
+	}
 }

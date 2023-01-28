@@ -13,6 +13,8 @@ public class CulturalFestival {
 	List<HistoricalFigure> figuresList = new ArrayList<HistoricalFigure>();
 	
 	// Constructor
+	public CulturalFestival() {}
+	
 	public CulturalFestival(String name, String date, String location, List<String> historicalFigures) {
 		super();
 		this.name = name;
@@ -66,6 +68,22 @@ public class CulturalFestival {
 		this.historicalFigures = historicalFigures;
 	}
 	
+	public List<String> getHistoricalFigures() {
+		return historicalFigures;
+	}
+
+	public void setHistoricalFigures(List<String> historicalFigures) {
+		this.historicalFigures = historicalFigures;
+	}
+
+	public List<HistoricalFigure> getFiguresList() {
+		return figuresList;
+	}
+
+	public void setFiguresList(List<HistoricalFigure> figuresList) {
+		this.figuresList = figuresList;
+	}
+
 	// Methods
 	void getData() {}
 		

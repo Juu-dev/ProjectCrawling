@@ -17,6 +17,8 @@ import hust.hedspi.base.hisfigure.HistoricalFigures;
 import hust.hedspi.crawling.Crawling;
 
 public class DataHisFigures {
+	public HistoricalFigures hisVNFigures = new HistoricalFigures();
+	
 	// Methods
 	
 	// get url list
@@ -403,7 +405,7 @@ public class DataHisFigures {
 	}
 
 	// get all figure in VN's history
-		public List<HistoricalFigure> getAllFigures2() {
+	public List<HistoricalFigure> getAllFigures2() {
 			List<HistoricalFigure> figuresExp = new ArrayList<HistoricalFigure>();
 			List<HistoricalFigure> allFigures = new ArrayList<HistoricalFigure>();
 			
@@ -457,8 +459,6 @@ public class DataHisFigures {
 	
 		
 	public void crawlingAndSaveToFile(File file) throws Exception {
-		HistoricalFigures hisVNFigures = new HistoricalFigures();
-		
 		Crawling data = new Crawling();
 		
 		// data sites

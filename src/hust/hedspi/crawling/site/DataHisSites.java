@@ -126,7 +126,7 @@ public class DataHisSites {
 					List<HistoricalFigure> figuresListVN = new ArrayList<HistoricalFigure>();
 					for (String hisFigureExp: hisFiguresExp) {
 						for (HistoricalFigure hisFigure: hisFiguresList ) {
-							if (hisFigureExp.compareTo(hisFigure.getName()) == 0) {
+							if (hisFigureExp.contains(hisFigure.getName())) {
 								figuresListVN.add(hisFigure);
 							}
 						}

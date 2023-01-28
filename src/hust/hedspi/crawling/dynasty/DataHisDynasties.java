@@ -22,6 +22,7 @@ import hust.hedspi.crawling.event.DataHistoricalEvents;
 import hust.hedspi.crawling.figure.DataHisFigures;
 
 public class DataHisDynasties {
+	
 	static HistoricalPeriod hisPeriod1 = new HistoricalPeriod("Thời kỳ tiền sử");
 	static HistoricalPeriod hisPeriod2 = new HistoricalPeriod("Thời kỳ cổ đại");
 	static HistoricalPeriod hisPeriod3 = new HistoricalPeriod("Thời kỳ Bắc thuộc");
@@ -33,7 +34,6 @@ public class DataHisDynasties {
 	// method crawling data thoi ki tien su
 	public void dataPrehistoric() {
 		List<HistoricalChildPeriod> childPeriodList = new ArrayList<HistoricalChildPeriod>();
-		DataHistoricalEvents dataHisEvents = new DataHistoricalEvents();
 		
 		String url = "https://vi.wikipedia.org/wiki/L%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam#Th%E1%BB%9Di_k%E1%BB%B3_ti%E1%BB%81n_s%E1%BB%AD";
 		String query1 = "h3 > span + span[id^=\"Thời_đại_đồ\"]";

@@ -151,7 +151,7 @@ public class DataHistoricalEvents {
 				}
 			}
             
-            if (timeEvent.compareTo("") == 0) {
+            if (timeEvent.compareTo("") == 0 && nameEvent.length() != 0) {
             	timeEvent += nameEvent.substring(nameEvent.indexOf("năm ")+4, nameEvent.length());
 			}
 

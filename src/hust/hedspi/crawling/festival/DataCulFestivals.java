@@ -49,7 +49,7 @@ public class DataCulFestivals {
 			
 			for (String figure: historicalFigures) {
 				for (HistoricalFigure hisFigure: hisFigures) {
-					if (figure.compareTo(hisFigure.getName()) == 0) {
+					if (figure.contains(hisFigure.getName())) {
 						figuresList.add(hisFigure);
 					}
 				}

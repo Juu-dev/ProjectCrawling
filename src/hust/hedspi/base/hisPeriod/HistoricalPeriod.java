@@ -1,4 +1,4 @@
-package hust.hedspi.base.hisPeriod;
+package hust.hedspi.base.hisperiod;
 
 import java.util.ArrayList;
 import java.util.List;

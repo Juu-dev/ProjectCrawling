@@ -27,5 +27,7 @@ public class Crawling {
     		Elements lstArticles = doc.select(query);
 			return lstArticles;
     }
+    
+    
 }
 

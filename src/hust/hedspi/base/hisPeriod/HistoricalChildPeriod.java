@@ -1,12 +1,17 @@
-package hust.hedspi.base.hisPeriod;
+package hust.hedspi.base.hisperiod;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import hust.hedspi.base.hisevent.HistoricalEvent;
+import hust.hedspi.base.hisfigure.HistoricalFigure;
 
 public class HistoricalChildPeriod {
 	String name;
 	String year;
 	String content;
+	List<HistoricalEvent> eventList = new ArrayList<HistoricalEvent>();
+	List<HistoricalFigure> figureList = new ArrayList<HistoricalFigure>();
 	List<HistoricalDynasty> dynastyList = new ArrayList<HistoricalDynasty>();
 	// Constructor
 	public HistoricalChildPeriod() {}
@@ -60,6 +65,22 @@ public class HistoricalChildPeriod {
 
 	public void setDynastyList(List<HistoricalDynasty> dynastyList) {
 		this.dynastyList = dynastyList;
+	}
+
+	public List<HistoricalEvent> getEventList() {
+		return eventList;
+	}
+
+	public void setEventList(List<HistoricalEvent> eventList) {
+		this.eventList = eventList;
+	}
+
+	public List<HistoricalFigure> getFigureList() {
+		return figureList;
+	}
+
+	public void setFigureList(List<HistoricalFigure> figureList) {
+		this.figureList = figureList;
 	}
 
 	// Methods

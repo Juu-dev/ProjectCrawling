@@ -183,13 +183,13 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="perNameCol" text="Thời kì lịch sử">
+            <Tab text="Thời kì lịch sử">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TableView fx:id="tbDynasty2" prefHeight="159.0" prefWidth="800.0">
                            <columns>
-                              <TableColumn fx:id="dynNameCol2" prefWidth="147.0" text="Tên" />
+                              <TableColumn fx:id="perNameCol" prefWidth="147.0" text="Tên" />
                               <TableColumn fx:id="perTimeCol" prefWidth="100.0" text="Thời gian" />
                               <TableColumn fx:id="perContentCol" prefWidth="160.0" text="Nội dung" />
                            </columns>

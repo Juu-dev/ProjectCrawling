@@ -351,7 +351,7 @@ public class DataHisDynasties implements dataHisInterface {
             i++;
         }
         
-        // 
+        // get figure and set kings dynasty
         for (int ii=0; ii<5; ii++) {
         	switch (ii) {
 			case 0: {
@@ -364,7 +364,7 @@ public class DataHisDynasties implements dataHisInterface {
 						List<HistoricalFigure> hisFigureList = dataHisFig.ngoDynasty();
 						for (HistoricalFigure hisFigure: hisFigureList) {
 							if (hisFigure.getJob().contains("Vua")) {
-								historicalKings.add(hisFigure.getJob());
+								historicalKings.add(hisFigure.getName());
 							}
 						}
 						hisDynasty.setHistoricalKings(historicalKings);
@@ -376,7 +376,7 @@ public class DataHisDynasties implements dataHisInterface {
 						hisDynasty.setHistoricalFigures(hisFigureList);
 						for (HistoricalFigure hisFigure: hisFigureList) {
 							if (hisFigure.getJob().compareTo("Vua") == 0) {
-								historicalKings.add(hisFigure.getJob());
+								historicalKings.add(hisFigure.getName());
 							}
 						}
 						hisDynasty.setHistoricalKings(historicalKings);
@@ -387,7 +387,7 @@ public class DataHisDynasties implements dataHisInterface {
 						hisDynasty.setHistoricalFigures(hisFigureList);
 						for (HistoricalFigure hisFigure: hisFigureList) {
 							if (hisFigure.getJob().compareTo("Vua") == 0) {
-								historicalKings.add(hisFigure.getJob());
+								historicalKings.add(hisFigure.getName());
 							}
 						}
 						hisDynasty.setHistoricalKings(historicalKings);
@@ -398,7 +398,7 @@ public class DataHisDynasties implements dataHisInterface {
 						hisDynasty.setHistoricalFigures(hisFigureList);
 						for (HistoricalFigure hisFigure: hisFigureList) {
 							if (hisFigure.getJob().compareTo("Vua") == 0) {
-								historicalKings.add(hisFigure.getJob());
+								historicalKings.add(hisFigure.getName());
 							}
 						}
 						hisDynasty.setHistoricalKings(historicalKings);
@@ -409,7 +409,7 @@ public class DataHisDynasties implements dataHisInterface {
 						hisDynasty.setHistoricalFigures(hisFigureList);
 						for (HistoricalFigure hisFigure: hisFigureList) {
 							if (hisFigure.getJob().compareTo("Vua") == 0) {
-								historicalKings.add(hisFigure.getJob());
+								historicalKings.add(hisFigure.getName());
 							}
 						}
 						hisDynasty.setHistoricalKings(historicalKings);
@@ -420,15 +420,18 @@ public class DataHisDynasties implements dataHisInterface {
 						hisDynasty.setHistoricalFigures(hisFigureList);
 						for (HistoricalFigure hisFigure: hisFigureList) {
 							if (hisFigure.getJob().compareTo("Vua") == 0) {
-								historicalKings.add(hisFigure.getJob());
+								historicalKings.add(hisFigure.getName());
 							}
 						}
 						hisDynasty.setHistoricalKings(historicalKings);
 					}
+					
 					dynastyList.add(hisDynasty);
 				}
+				
 				hisChildPeriod.setDynastyList(dynastyList);
 				childPeriodList.add(hisChildPeriod);
+				
 				break;
 			}
 			case 1: {
@@ -458,7 +461,7 @@ public class DataHisDynasties implements dataHisInterface {
 					hisDynasty.setHistoricalFigures(hisFigureList);
 					for (HistoricalFigure hisFigure: hisFigureList) {
 						if (hisFigure.getJob().compareTo("Vua") == 0) {
-							historicalKings.add(hisFigure.getJob());
+							historicalKings.add(hisFigure.getName());
 						}
 					}
 					hisDynasty.setHistoricalKings(historicalKings);
@@ -480,7 +483,7 @@ public class DataHisDynasties implements dataHisInterface {
 						hisDynasty.setHistoricalFigures(hisFigureList);
 						for (HistoricalFigure hisFigure: hisFigureList) {
 							if (hisFigure.getJob().contains("Vua")) {
-								historicalKings.add(hisFigure.getJob());
+								historicalKings.add(hisFigure.getName());
 							}
 						}
 						hisDynasty.setHistoricalKings(historicalKings);
@@ -491,7 +494,7 @@ public class DataHisDynasties implements dataHisInterface {
 						hisDynasty.setHistoricalFigures(hisFigureList);
 						for (HistoricalFigure hisFigure: hisFigureList) {
 							if (hisFigure.getJob().contains("Vua")) {
-								historicalKings.add(hisFigure.getJob());
+								historicalKings.add(hisFigure.getName());
 							}
 						}
 						hisDynasty.setHistoricalKings(historicalKings);
@@ -586,8 +589,8 @@ public class DataHisDynasties implements dataHisInterface {
         	childPeriodList.add(hisChildPeriod);
         }
         
-     // complete hisPeriod5
-     		hisPeriod5.setChildPeriodList(childPeriodList);
+        // complete hisPeriod5
+     	hisPeriod5.setChildPeriodList(childPeriodList);
 	}
 
 	// main fuction
@@ -610,6 +613,7 @@ public class DataHisDynasties implements dataHisInterface {
 		hisVNPeriods.addElement(hisPeriod3);
 		hisVNPeriods.addElement(hisPeriod4);
 		hisVNPeriods.addElement(hisPeriod5);
+	
 
 		ObjectMapper mapper = new ObjectMapper();
 //        String jsonInString = null;

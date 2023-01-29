@@ -60,7 +60,7 @@ public class HistoricalDynasty {
 		this.name = name;
 	}
 
-		public String getYear() {
+	public String getYear() {
 		return year;
 	}
 

@@ -23,7 +23,7 @@ public class HistoricalFigures {
 		hisVNFigures.addAll(figure);
 	}
 	
-	public List<HistoricalFigure> searchFigure (String input) {
+	public List<HistoricalFigure> searchFigure(String input) {
 		List<HistoricalFigure> resultSearch = new ArrayList<HistoricalFigure>();
 		
 		for (HistoricalFigure figure: hisVNFigures) {

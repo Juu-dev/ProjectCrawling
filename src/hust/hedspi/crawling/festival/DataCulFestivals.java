@@ -17,13 +17,15 @@ import hust.hedspi.base.culfestival.CulturalFestival;
 import hust.hedspi.base.culfestival.CulturalFestivals;
 import hust.hedspi.base.hisfigure.HistoricalFigure;
 import hust.hedspi.crawling.Crawling;
+import hust.hedspi.crawling.dataHisInterface;
 import hust.hedspi.crawling.figure.DataHisFigures;
 
-public class DataCulFestivals {
+public class DataCulFestivals implements dataHisInterface {
 	String url = "https://vi.wikipedia.org/wiki/L%E1%BB%85_h%E1%BB%99i_Vi%E1%BB%87t_Nam#Danh_s%C3%A1ch_m%E1%BB%99t_s%E1%BB%91_l%E1%BB%85_h%E1%BB%99i";
 	String query = "table.prettytable.wikitable tr";
 	
 	// Method
+	@Override
 	public void crawlingAndSaveToFile(File file) throws Exception {
 		DataHisFigures figureList = new DataHisFigures();
 		

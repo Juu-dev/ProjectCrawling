@@ -19,12 +19,14 @@ public class HistoricalPeriods {
 		hisVNPeriods.add(per);
 	}
 	
-	public HistoricalPeriod searchPeriod(String input) {
+	public List<HistoricalPeriod> searchPeriod(String input) {
+		List<HistoricalPeriod> resultSearch = new ArrayList<HistoricalPeriod>();
+		
 		for (HistoricalPeriod period: hisVNPeriods) {
 			if (period.getName().toLowerCase().contains(input.toLowerCase())) {
-				return period;
+				resultSearch.add(period);
 			}
 		}
-		return null;
+		return resultSearch;
 	}
 }

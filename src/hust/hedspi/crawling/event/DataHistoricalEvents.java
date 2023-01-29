@@ -16,14 +16,14 @@ import hust.hedspi.base.hisevent.HistoricalEvent;
 import hust.hedspi.base.hisevent.HistoricalEvents;
 import hust.hedspi.base.hisfigure.HistoricalFigure;
 import hust.hedspi.crawling.Crawling;
+import hust.hedspi.crawling.dataHisInterface;
 import hust.hedspi.crawling.figure.DataHisFigures;
 
 
-public class DataHistoricalEvents {
+public class DataHistoricalEvents implements dataHisInterface {
 	HistoricalEvents hisVNEvents = new HistoricalEvents();
 	
 	// Methods
-	
 	public String dataEdit(String data) {
 		StringBuffer data1 = new StringBuffer(data);
 		
@@ -247,6 +247,7 @@ public class DataHistoricalEvents {
 	}
 	
 	// main methods
+	@Override
 	public void crawlingAndSaveToFile(File file) throws Exception {		
 		// crawling data 1
 		getEventBefore938();

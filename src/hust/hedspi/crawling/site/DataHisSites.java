@@ -16,9 +16,10 @@ import hust.hedspi.base.hisfigure.HistoricalFigure;
 import hust.hedspi.base.hissite.HistoricalSite;
 import hust.hedspi.base.hissite.HistoricalSites;
 import hust.hedspi.crawling.Crawling;
+import hust.hedspi.crawling.dataHisInterface;
 import hust.hedspi.crawling.figure.DataHisFigures;
 
-public class DataHisSites {
+public class DataHisSites implements dataHisInterface {
 	String url = "https://vi.wikipedia.org/wiki/Danh_s%C3%A1ch_Di_t%C3%ADch_qu%E1%BB%91c_gia_Vi%E1%BB%87t_Nam";
 	String query1 = "div.mw-parser-output > h3 > span.mw-headline";
 	String query2 = "div.mw-parser-output > h3 + table > tbody";
@@ -31,6 +32,7 @@ public class DataHisSites {
 	
 	// Methods
 	// main methods
+	@Override
 	public void crawlingAndSaveToFile(File file) throws Exception {
 		DataHisFigures figuresList = new DataHisFigures();
 		

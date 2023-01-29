@@ -115,11 +115,4 @@ public class HistoricalDynasty {
 	public void setHistoricalFigures(List<HistoricalFigure> historicalFigures) {
 		this.historicalFigures = historicalFigures;
 	}
-
-	// Methods
-	void getData() {
-		
-	}
-
-	
 }

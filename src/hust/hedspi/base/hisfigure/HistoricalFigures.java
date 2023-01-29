@@ -23,12 +23,14 @@ public class HistoricalFigures {
 		hisVNFigures.addAll(figure);
 	}
 	
-	public HistoricalFigure searchFigure (String input) {
+	public List<HistoricalFigure> searchFigure (String input) {
+		List<HistoricalFigure> resultSearch = new ArrayList<HistoricalFigure>();
+		
 		for (HistoricalFigure figure: hisVNFigures) {
 			if (figure.getName().toLowerCase().contains(input.toLowerCase())) {
-				return figure;
+				resultSearch.add(figure);
 			}
 		}
-		return null;
+		return resultSearch;
 	}
 }

@@ -15,8 +15,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import hust.hedspi.base.hisfigure.HistoricalFigure;
 import hust.hedspi.base.hisfigure.HistoricalFigures;
 import hust.hedspi.crawling.Crawling;
+import hust.hedspi.crawling.dataHisInterface;
 
-public class DataHisFigures {
+public class DataHisFigures implements dataHisInterface {
 	public HistoricalFigures hisVNFigures = new HistoricalFigures();
 	
 	// Methods
@@ -49,6 +50,7 @@ public class DataHisFigures {
 		
 		for (String newUrl: urlList) {
 			data.connectToWeb(newUrl);
+			
 			String nameFigure = data.crawlingData(query1).text();
 			String contentFigure = data.crawlingData(query2).text();
 			boolean isKing = king;
@@ -410,57 +412,43 @@ public class DataHisFigures {
 			List<HistoricalFigure> allFigures = new ArrayList<HistoricalFigure>();
 			
 			figuresExp = tienLeDynasty();
-			for (HistoricalFigure figureExp: figuresExp) {
-				allFigures.add(figureExp);
-			}
+			allFigures.addAll(figuresExp);
+			
 			figuresExp = tranDynasty();
-			for (HistoricalFigure figureExp: figuresExp) {
-				allFigures.add(figureExp);
-			}
+			allFigures.addAll(figuresExp);
+			
 			figuresExp = taySonDynasty();
-			for (HistoricalFigure figureExp: figuresExp) {
-				allFigures.add(figureExp);
-			}
+			allFigures.addAll(figuresExp);
+			
 			figuresExp = nguyenDynasty();
-			for (HistoricalFigure figureExp: figuresExp) {
-				allFigures.add(figureExp);
-			}
+			allFigures.addAll(figuresExp);
+			
 			figuresExp = ngoDynasty();
-			for (HistoricalFigure figureExp: figuresExp) {
-				allFigures.add(figureExp);
-			}
+			allFigures.addAll(figuresExp);
+			
 			figuresExp = lyDynasty();
-			for (HistoricalFigure figureExp: figuresExp) {
-				allFigures.add(figureExp);
-			}
+			allFigures.addAll(figuresExp);
+			
 			figuresExp = hoDynasty();
-			for (HistoricalFigure figureExp: figuresExp) {
-				allFigures.add(figureExp);
-			}
+			allFigures.addAll(figuresExp);
+			
 			figuresExp = haiBaTrungDynasty();
-			for (HistoricalFigure figureExp: figuresExp) {
-				allFigures.add(figureExp);
-			}
+			allFigures.addAll(figuresExp);
+			
 			figuresExp = dinhDynasty();
-			for (HistoricalFigure figureExp: figuresExp) {
-				allFigures.add(figureExp);
-			}
+			allFigures.addAll(figuresExp);
+			
 			figuresExp = chuaTrinhDynasty();
-			for (HistoricalFigure figureExp: figuresExp) {
-				allFigures.add(figureExp);
-			}
+			allFigures.addAll(figuresExp);
+			
 			figuresExp = chuaNguyenDynasty();
-			for (HistoricalFigure figureExp: figuresExp) {
-				allFigures.add(figureExp);
-			}
+			allFigures.addAll(figuresExp);
 			
 			return allFigures;
 		}
-	
-		
+
+	@Override
 	public void crawlingAndSaveToFile(File file) throws Exception {
-		Crawling data = new Crawling();
-		
 		// data sites
 		hisVNFigures = getAllFigures1();
 		
@@ -484,4 +472,7 @@ public class DataHisFigures {
 	          e.printStackTrace();
 	      }
 	}
+	
+		
+	
 }

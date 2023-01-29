@@ -23,12 +23,14 @@ public class HistoricalEvents {
 	}
 	
 	// Methods
-	public HistoricalEvent searchEvent (String input) {
+	public List<HistoricalEvent> searchEvent (String input) {
+		List<HistoricalEvent> resultSearch = new ArrayList<HistoricalEvent>();
+		
 		for (HistoricalEvent event: hisVNEvents) {
 			if (event.getName().toLowerCase().contains(input.toLowerCase())) {
-				return event;
+				resultSearch.add(event);
 			}
 		}
-		return null;
+		return resultSearch;
 	}
 }

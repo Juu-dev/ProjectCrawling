@@ -1,13 +1,11 @@
 package hust.hedspi.crawling;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-import hust.hedspi.base.hisfigure.HistoricalFigures;
 import hust.hedspi.crawling.dynasty.DataHisDynasties;
 import hust.hedspi.crawling.event.DataHistoricalEvents;
 import hust.hedspi.crawling.festival.DataCulFestivals;
@@ -46,13 +44,13 @@ public class HistoricalCrawling {
 				fileFigures.createNewFile(); 				
 			}
 				// Historical Dynasty
-//				dataHisDyn.crawlingAndSaveToFile(fileDyn);
+				dataHisDyn.crawlingAndSaveToFile(fileDyn);
 				// Historical Figures
 //				dataHisFigs.crawlingAndSaveToFile(fileFigures);
 				// Historical Festivals
 //				dataCulFes.crawlingAndSaveToFile(fileFes);
 				// Historical Events
-				dataHisEvents.crawlingAndSaveToFile(fileEvent);
+//				dataHisEvents.crawlingAndSaveToFile(fileEvent);
 				// Historical Sites
 //				dataHisSites.crawlingAndSaveToFile(fileSites);
 				

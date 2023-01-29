@@ -135,12 +135,4 @@ public class HistoricalFigure {
 	public void setNameDynasty(String nameDynasty) {
 		this.nameDynasty = nameDynasty;
 	}
-
-	// Methods	
-	void getData() {
-		
-	}
-
-	
-	
 }

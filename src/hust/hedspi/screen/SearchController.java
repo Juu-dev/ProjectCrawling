@@ -1,5 +1,6 @@
 package hust.hedspi.screen;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import hust.hedspi.base.culfestival.CulturalFestival;
@@ -9,6 +10,7 @@ import hust.hedspi.base.hisperiod.HistoricalChildPeriod;
 import hust.hedspi.base.hisperiod.HistoricalDynasty;
 import hust.hedspi.base.hisperiod.HistoricalPeriod;
 import hust.hedspi.base.hissite.HistoricalSite;
+import hust.hedspi.search.Search;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -168,16 +170,15 @@ public class SearchController {
     	opTionSearchResult = 6;
     }
     	
-	@SuppressWarnings("unchecked")
 	@FXML
     public void onClickSearchBtn(ActionEvent event) {
-    	HistoricalPeriod hisPer = new HistoricalPeriod();
-    	HistoricalChildPeriod hisChildPer = new HistoricalChildPeriod();
-    	HistoricalDynasty hisDyn = new HistoricalDynasty();
-    	HistoricalEvent hisEvent = new HistoricalEvent();
-    	CulturalFestival culFest = new CulturalFestival();
-    	HistoricalFigure hisFig = new HistoricalFigure();
-    	HistoricalSite hisSite = new HistoricalSite();
+    	List<HistoricalPeriod> hisPer = new ArrayList<HistoricalPeriod>();
+    	List<HistoricalChildPeriod> hisChildPer = new ArrayList<HistoricalChildPeriod>();
+    	List<HistoricalDynasty> hisDyn = new ArrayList<HistoricalDynasty>();
+    	List<HistoricalEvent> hisEvent = new ArrayList<HistoricalEvent>();
+    	List<CulturalFestival> culFest = new ArrayList<CulturalFestival>();
+    	List<HistoricalFigure> hisFig = new ArrayList<HistoricalFigure>();
+    	List<HistoricalSite> hisSite = new ArrayList<HistoricalSite>();
     	
     	String valueTF = inputSearchBar.getText();
     	

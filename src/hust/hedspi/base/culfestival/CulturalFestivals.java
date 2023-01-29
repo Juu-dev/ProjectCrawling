@@ -20,12 +20,17 @@ public class CulturalFestivals {
 		culVNFestivals.add(cul);
 	}
 	
-	public CulturalFestival searchFestival (String input) {
+	public List<CulturalFestival> searchFestival (String input) {
+		List<CulturalFestival> resultSearch = new ArrayList<CulturalFestival>();
+		
 		for (CulturalFestival festival: culVNFestivals) {
 			if (festival.getName().toLowerCase().contains(input.toLowerCase())) {
-				return festival;
+				resultSearch.add(festival);
 			}
 		}
-		return null;
+		return resultSearch;
 	}
 }
+
+
+

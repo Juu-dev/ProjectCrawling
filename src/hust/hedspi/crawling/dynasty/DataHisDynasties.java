@@ -17,11 +17,13 @@ import hust.hedspi.base.hisperiod.HistoricalChildPeriod;
 import hust.hedspi.base.hisperiod.HistoricalDynasty;
 import hust.hedspi.base.hisperiod.HistoricalPeriod;
 import hust.hedspi.base.hisperiod.HistoricalPeriods;
+
 import hust.hedspi.crawling.Crawling;
+import hust.hedspi.crawling.dataHisInterface;
 import hust.hedspi.crawling.event.DataHistoricalEvents;
 import hust.hedspi.crawling.figure.DataHisFigures;
 
-public class DataHisDynasties {
+public class DataHisDynasties implements dataHisInterface {
 	
 	static HistoricalPeriod hisPeriod1 = new HistoricalPeriod("Thời kỳ tiền sử");
 	static HistoricalPeriod hisPeriod2 = new HistoricalPeriod("Thời kỳ cổ đại");
@@ -358,22 +360,70 @@ public class DataHisDynasties {
 				for (int jj = 0; jj < 6; jj++) {
 					HistoricalDynasty hisDynasty = new HistoricalDynasty(nameDynasties[jj], yearDynasties[jj], contentDynasties[jj], nameCountryDynasties[jj]);
 					if (jj == 0) {
-						hisDynasty.setHistoricalFigures(dataHisFig.ngoDynasty());
+						List<String> historicalKings = new ArrayList<String>();
+						List<HistoricalFigure> hisFigureList = dataHisFig.ngoDynasty();
+						for (HistoricalFigure hisFigure: hisFigureList) {
+							if (hisFigure.getJob().contains("Vua")) {
+								historicalKings.add(hisFigure.getJob());
+							}
+						}
+						hisDynasty.setHistoricalKings(historicalKings);
+						hisDynasty.setHistoricalFigures(hisFigureList);
 					}
 					else if (jj == 1) {
-						hisDynasty.setHistoricalFigures(dataHisFig.dinhDynasty());
+						List<String> historicalKings = new ArrayList<String>();
+						List<HistoricalFigure> hisFigureList = dataHisFig.dinhDynasty();
+						hisDynasty.setHistoricalFigures(hisFigureList);
+						for (HistoricalFigure hisFigure: hisFigureList) {
+							if (hisFigure.getJob().compareTo("Vua") == 0) {
+								historicalKings.add(hisFigure.getJob());
+							}
+						}
+						hisDynasty.setHistoricalKings(historicalKings);
 					}
 					else if (jj == 2) {
-						hisDynasty.setHistoricalFigures(dataHisFig.tienLeDynasty());
+						List<String> historicalKings = new ArrayList<String>();
+						List<HistoricalFigure> hisFigureList = dataHisFig.tienLeDynasty();
+						hisDynasty.setHistoricalFigures(hisFigureList);
+						for (HistoricalFigure hisFigure: hisFigureList) {
+							if (hisFigure.getJob().compareTo("Vua") == 0) {
+								historicalKings.add(hisFigure.getJob());
+							}
+						}
+						hisDynasty.setHistoricalKings(historicalKings);
 					}
 					else if (jj == 3) {
-						hisDynasty.setHistoricalFigures(dataHisFig.lyDynasty());
+						List<String> historicalKings = new ArrayList<String>();
+						List<HistoricalFigure> hisFigureList = dataHisFig.lyDynasty();
+						hisDynasty.setHistoricalFigures(hisFigureList);
+						for (HistoricalFigure hisFigure: hisFigureList) {
+							if (hisFigure.getJob().compareTo("Vua") == 0) {
+								historicalKings.add(hisFigure.getJob());
+							}
+						}
+						hisDynasty.setHistoricalKings(historicalKings);
 					}
 					else if (jj == 4) {
-						hisDynasty.setHistoricalFigures(dataHisFig.tranDynasty());
+						List<String> historicalKings = new ArrayList<String>();
+						List<HistoricalFigure> hisFigureList = dataHisFig.tranDynasty();
+						hisDynasty.setHistoricalFigures(hisFigureList);
+						for (HistoricalFigure hisFigure: hisFigureList) {
+							if (hisFigure.getJob().compareTo("Vua") == 0) {
+								historicalKings.add(hisFigure.getJob());
+							}
+						}
+						hisDynasty.setHistoricalKings(historicalKings);
 					}
 					else if (jj == 5) {
-						hisDynasty.setHistoricalFigures(dataHisFig.hoDynasty());
+						List<String> historicalKings = new ArrayList<String>();
+						List<HistoricalFigure> hisFigureList = dataHisFig.hoDynasty();
+						hisDynasty.setHistoricalFigures(hisFigureList);
+						for (HistoricalFigure hisFigure: hisFigureList) {
+							if (hisFigure.getJob().compareTo("Vua") == 0) {
+								historicalKings.add(hisFigure.getJob());
+							}
+						}
+						hisDynasty.setHistoricalKings(historicalKings);
 					}
 					dynastyList.add(hisDynasty);
 				}
@@ -402,7 +452,17 @@ public class DataHisDynasties {
 				List<HistoricalDynasty> dynastyList = new ArrayList<HistoricalDynasty>();
 				for (int jj = 7; jj <8 ; jj++) {
 					HistoricalDynasty hisDynasty = new HistoricalDynasty(nameDynasties[jj], yearDynasties[jj], contentDynasties[jj], nameCountryDynasties[jj]);
-					hisDynasty.setHistoricalFigures(dataHisFig.macDynasty());
+					
+					List<String> historicalKings = new ArrayList<String>();
+					List<HistoricalFigure> hisFigureList = dataHisFig.macDynasty();
+					hisDynasty.setHistoricalFigures(hisFigureList);
+					for (HistoricalFigure hisFigure: hisFigureList) {
+						if (hisFigure.getJob().compareTo("Vua") == 0) {
+							historicalKings.add(hisFigure.getJob());
+						}
+					}
+					hisDynasty.setHistoricalKings(historicalKings);
+					
 					dynastyList.add(hisDynasty);
 				}
 				hisChildPeriod.setDynastyList(dynastyList);
@@ -415,10 +475,26 @@ public class DataHisDynasties {
 				for (int jj = 8; jj <10 ; jj++) {
 					HistoricalDynasty hisDynasty = new HistoricalDynasty(nameDynasties[jj], yearDynasties[jj], contentDynasties[jj], nameCountryDynasties[jj]);
 					if (jj == 8) {
-						hisDynasty.setHistoricalFigures(dataHisFig.taySonDynasty());
+						List<String> historicalKings = new ArrayList<String>();
+						List<HistoricalFigure> hisFigureList = dataHisFig.taySonDynasty();
+						hisDynasty.setHistoricalFigures(hisFigureList);
+						for (HistoricalFigure hisFigure: hisFigureList) {
+							if (hisFigure.getJob().contains("Vua")) {
+								historicalKings.add(hisFigure.getJob());
+							}
+						}
+						hisDynasty.setHistoricalKings(historicalKings);
 					}
 					else {
-						hisDynasty.setHistoricalFigures(dataHisFig.chuaNguyenDynasty());
+						List<String> historicalKings = new ArrayList<String>();
+						List<HistoricalFigure> hisFigureList = dataHisFig.chuaNguyenDynasty();
+						hisDynasty.setHistoricalFigures(hisFigureList);
+						for (HistoricalFigure hisFigure: hisFigureList) {
+							if (hisFigure.getJob().contains("Vua")) {
+								historicalKings.add(hisFigure.getJob());
+							}
+						}
+						hisDynasty.setHistoricalKings(historicalKings);
 					}
 					dynastyList.add(hisDynasty);
 				}
@@ -515,6 +591,7 @@ public class DataHisDynasties {
 	}
 
 	// main fuction
+	@Override
 	public void crawlingAndSaveToFile(File file) throws Exception {
 		HistoricalPeriods hisVNPeriods = new HistoricalPeriods();
 		

@@ -19,12 +19,14 @@ public class HistoricalSites {
 		hisVNSites.add(site);
 	}
 	
-	public HistoricalSite searchSite (String input) {
+	public List<HistoricalSite> searchSite (String input) {
+		List<HistoricalSite> resutlSearch = new ArrayList<HistoricalSite>();
+		
 		for (HistoricalSite site: hisVNSites) {
 			if (site.getName().toLowerCase().contains(input.toLowerCase())) {
-				return site;
+				resutlSearch.add(site);
 			}
 		}
-		return null;
+		return resutlSearch;
 	}
 }

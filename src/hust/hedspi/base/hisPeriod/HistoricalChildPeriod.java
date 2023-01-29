@@ -84,13 +84,15 @@ public class HistoricalChildPeriod {
 	}
 
 	// Methods
-	public HistoricalDynasty searchDynasty(String input) {
+	public List<HistoricalDynasty> searchDynasty(String input) {
+		List<HistoricalDynasty> resultSearch = new ArrayList<HistoricalDynasty>();
+		
 		for (HistoricalDynasty dynasty: dynastyList) {
 			if (dynasty.getName().toLowerCase().contains(input.toLowerCase())) {
-				return dynasty;
+				resultSearch.add(dynasty) ;
 			}
 		}
-		return null;
+		return resultSearch;
 	}
 
 	

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <VBox prefHeight="111.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nhóm 17" textAlignment="CENTER" wrappingWidth="802.6927185058594">
+               <rotationAxis>
+                  <Point3D x="1.0" y="1.0" z="1.0" />
+               </rotationAxis>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Label alignment="CENTER" prefHeight="85.0" prefWidth="805.0" text="History's Google" textAlignment="CENTER" textFill="#517e8f">
+               <font>
+                  <Font name="Imprint MT Shadow" size="50.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <SplitMenuButton mnemonicParsing="false" prefHeight="35.0" prefWidth="141.0" text="Lĩnh vực">
+              <items>
+                  <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem1" selected="true" text="Tất cả">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="LinhVuc" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem2" text="Nhân vật lịch sử" toggleGroup="$LinhVuc" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem3" text="Di tích lịch sử" toggleGroup="$LinhVuc" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem4" text="Triều đại lịch sử" toggleGroup="$LinhVuc" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem5" text="Lễ hội văn hóa" toggleGroup="$LinhVuc" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem6" text="Sự kiện lịch sử" toggleGroup="$LinhVuc" />
+              </items>
+               <HBox.margin>
+                  <Insets left="114.0" top="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </SplitMenuButton>
+            <TextField fx:id="inputSearchBar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="408.0">
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#onClickSearchBtn" prefHeight="34.0" prefWidth="37.0" text="🔍">
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <TabPane prefHeight="187.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+        <tabs>
+            <Tab text="Nhân vật lịch sử">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableFig" prefHeight="160.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn fx:id="figNameCol" prefWidth="140.0" text="Tên" />
+                              <TableColumn fx:id="figTimeCol" prefWidth="110.0" text="Thời gian" />
+                              <TableColumn fx:id="figContentCol" prefWidth="170.0" text="Nội dung" />
+                              <TableColumn fx:id="figJobCol" prefWidth="100.0" text="Nghề nghiệp" />
+                              <TableColumn fx:id="figDynastyCol" prefWidth="90.0" text="Triều đại" />
+                              <TableColumn fx:id="figEventCol" prefWidth="120.0" text="Sự kiện lịch sử" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Lễ hội văn hóa">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbFest" prefHeight="159.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn fx:id="festNameCol" prefWidth="170.0" text="Tên" />
+                              <TableColumn fx:id="festTimeCol" prefWidth="130.0" text="Thời gian" />
+                              <TableColumn fx:id="festLocationCol" prefWidth="180.0" text="Vị trí" />
+                              <TableColumn fx:id="festFigureCol" prefWidth="160.0" text="Nhân vật lịch sử" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Sự kiện lịch sử">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbEvent" prefHeight="161.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn fx:id="eventNameCol" prefWidth="140.0" text="Tên" />
+                              <TableColumn fx:id="eventTimeCol" prefWidth="100.0" text="Thời gian" />
+                              <TableColumn fx:id="eventContentCol" prefWidth="160.0" text="Nội dung" />
+                              <TableColumn fx:id="eventLocationCol" prefWidth="120.0" text="Vị trí" />
+                              <TableColumn fx:id="eventFigureCol" prefWidth="160.0" text="Nhân vật lịch sử" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab text="Di tích lịch sử">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbSite" prefHeight="158.0" prefWidth="800.0">
+                          <columns>
+                            <TableColumn fx:id="siteNameCol" prefWidth="120.0" text="Tên" />
+                            <TableColumn fx:id="siteTimeCol" prefWidth="85.0" text="Thời gian" />
+                              <TableColumn fx:id="siteContentCol" prefWidth="140.0" text="Nội dung" />
+                              <TableColumn fx:id="siteLocationCol" prefWidth="100.0" text="Vị trí" />
+                              <TableColumn fx:id="siteFestivalCol" prefWidth="90.0" text="Lễ hội" />
+                              <TableColumn fx:id="siteFigureCol" prefWidth="120.0" text="Nhân vật lịch sử" />
+                              <TableColumn fx:id="siteEventCol" prefWidth="120.0" text="Sự kiện lịch sử" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Triều đại lịch sử">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbDynasty" prefHeight="159.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn fx:id="dynNameCol" prefWidth="147.0" text="Tên" />
+                              <TableColumn fx:id="dynTimeCol" prefWidth="100.0" text="Thời gian" />
+                              <TableColumn fx:id="dynContentCol" prefWidth="160.0" text="Nội dung" />
+                              <TableColumn fx:id="dynKingsCol" prefWidth="160.0" text="Các vị vua" />
+                              <TableColumn fx:id="dynFiguresCol" prefWidth="180.0" text="Nhân vật tiêu biểu" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Niên đại lịch sử">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbDynasty1" prefHeight="159.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn fx:id="yearNameCol" prefWidth="147.0" text="Tên" />
+                              <TableColumn fx:id="yearTimeCol" prefWidth="100.0" text="Thời gian" />
+                              <TableColumn fx:id="yearContentCol" prefWidth="160.0" text="Nội dung" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="perNameCol" text="Thời kì lịch sử">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbDynasty2" prefHeight="159.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn fx:id="dynNameCol2" prefWidth="147.0" text="Tên" />
+                              <TableColumn fx:id="perTimeCol" prefWidth="100.0" text="Thời gian" />
+                              <TableColumn fx:id="perContentCol" prefWidth="160.0" text="Nội dung" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </bottom>
+</BorderPane>

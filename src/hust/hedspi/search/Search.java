@@ -20,7 +20,7 @@ import hust.hedspi.base.hisfigure.HistoricalFigure;
 import hust.hedspi.base.hisfigure.HistoricalFigures;
 
 
-public class Search implements SearchFunction {
+public class Search implements SearchInterface {
 	HistoricalPeriods hisPeriods = new HistoricalPeriods();
 	HistoricalEvents hisEvents = new HistoricalEvents();
 	CulturalFestivals culFests = new CulturalFestivals();
@@ -28,13 +28,9 @@ public class Search implements SearchFunction {
 	HistoricalFigures hisFigs = new HistoricalFigures();
 	
 	// Methods
-	// Search (Historical Period)
 	@Override
 	public List<HistoricalPeriod> searchPeriod (String input) {
-		// search
 		List<HistoricalPeriod> hisPeriod = hisPeriods.searchPeriod(input);
-		
-		// print information
 		return hisPeriod;
 	}
 	
@@ -47,8 +43,6 @@ public class Search implements SearchFunction {
 			List<HistoricalChildPeriod> resultSearch = period.searchChildPeriod(input);
 			hisChildPer.addAll(resultSearch);
 		}
-		
-		// print information
 		return hisChildPer;
 	}
 	
@@ -65,60 +59,40 @@ public class Search implements SearchFunction {
 				hisDyansty.addAll(resultSearch);
 			}
 		}
-		
-		// print information
 		return hisDyansty;
 	}
 	
-	// Search (Historical Event)
 	@Override
 	public List<HistoricalEvent> searchEvent (String input) {
-		
-		// search
 		List<HistoricalEvent> hisEvent = hisEvents.searchEvent(input);
-		
-		//print information
 		return hisEvent;
 	}
 	
-	// Search (Historical Festival)
 	@Override
 	public List<CulturalFestival> searchFestival (String input) {
-		// search
 		List<CulturalFestival> culFest = culFests.searchFestival(input);
-		
-		// print information
 		return culFest;
 	}
 	
-	// Search (Historical Figures)
 	@Override
 	public List<HistoricalFigure> searchFigure (String input) {
-		// search
 		List<HistoricalFigure> hisFigure = hisFigs.searchFigure(input);
-		
-		// print information
 		return hisFigure;
 	}
 	
-	// Search (Historical Sites)
 	@Override
 	public List<HistoricalSite> searchSite (String input) {
-		// search
 		List<HistoricalSite> hisSite = hisSites.searchSite(input);
-		
-		// print information
 		return hisSite;
 	}
 	
-	// main search method
 	@Override
 	public void searchMain () {
-		File fileDyn = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\dataDyn.json");
-		File fileFes = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\dataFes.json");
-		File fileEvent = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\dataEvent.json");
-		File fileSites = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\dataSites.json");
-		File fileFigures = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\dataFigues.json");
+		File fileDyn = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\dynastyData.json");
+		File fileFes = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\festivalData.json");
+		File fileEvent = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\eventData.json");
+		File fileSites = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\siteData.json");
+		File fileFigures = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\figureData.json");
 		
 		try {
 			ObjectMapper mapper = new ObjectMapper();

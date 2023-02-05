@@ -7,12 +7,12 @@ import hust.hedspi.base.hisevent.HistoricalEvent;
 import hust.hedspi.base.hisfigure.HistoricalFigure;
 
 public class HistoricalChildPeriod {
-	String name;
-	String year;
-	String content;
-	List<HistoricalEvent> eventList = new ArrayList<HistoricalEvent>();
-	List<HistoricalFigure> figureList = new ArrayList<HistoricalFigure>();
-	List<HistoricalDynasty> dynastyList = new ArrayList<HistoricalDynasty>();
+	private String name;
+	private String year;
+	private String content;
+	private List<HistoricalEvent> eventList = new ArrayList<HistoricalEvent>();
+	private List<HistoricalFigure> figureList = new ArrayList<HistoricalFigure>();
+	private List<HistoricalDynasty> dynastyList = new ArrayList<HistoricalDynasty>();
 	// Constructor
 	public HistoricalChildPeriod() {}
 	
@@ -84,11 +84,22 @@ public class HistoricalChildPeriod {
 	}
 
 	// Methods
+	public boolean searchCondition(HistoricalDynasty dynasty, String input) {
+		boolean condition1 = dynasty.getName().toLowerCase().contains(input.toLowerCase());
+		boolean condition2 = dynasty.getYear().toLowerCase().contains(input.toLowerCase());
+		boolean condition3 = dynasty.getContent().toLowerCase().contains(input.toLowerCase());
+		boolean condition4 = dynasty.getNameCountry().toLowerCase().contains(input.toLowerCase());
+		boolean condition5 = dynasty.getHisKingList().toLowerCase().contains(input.toLowerCase());
+		boolean condition6 = dynasty.getHisFigList().toLowerCase().contains(input.toLowerCase());
+		
+		return condition1 || condition2 || condition3 || condition4 || condition5 || condition6;  
+	}
+	
 	public List<HistoricalDynasty> searchDynasty(String input) {
 		List<HistoricalDynasty> resultSearch = new ArrayList<HistoricalDynasty>();
 		
 		for (HistoricalDynasty dynasty: dynastyList) {
-			if (dynasty.getName().toLowerCase().contains(input.toLowerCase())) {
+			if (searchCondition(dynasty, input)) {
 				resultSearch.add(dynasty) ;
 			}
 		}

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HistoricalPeriods {
-	List<HistoricalPeriod> hisVNPeriods = new ArrayList<HistoricalPeriod>();
+	private List<HistoricalPeriod> hisVNPeriods = new ArrayList<HistoricalPeriod>();
 
 	public List<HistoricalPeriod> getHisVNPeriods() {
 		return hisVNPeriods;
@@ -19,11 +19,23 @@ public class HistoricalPeriods {
 		hisVNPeriods.add(per);
 	}
 	
+	public void addElement(List<HistoricalPeriod> per) {
+		hisVNPeriods.addAll(per);
+	}
+	
+	public boolean searchCondition(HistoricalPeriod period, String input) {
+		boolean condition1 = period.getName().toLowerCase().contains(input.toLowerCase());
+		boolean condition2 = period.getYear().toLowerCase().contains(input.toLowerCase());
+		boolean condition3 = period.getContent().toLowerCase().contains(input.toLowerCase());
+		
+		return condition1 || condition2 || condition3;  
+	}
+	
 	public List<HistoricalPeriod> searchPeriod(String input) {
 		List<HistoricalPeriod> resultSearch = new ArrayList<HistoricalPeriod>();
 		
 		for (HistoricalPeriod period: hisVNPeriods) {
-			if (period.getName().toLowerCase().contains(input.toLowerCase())) {
+			if (searchCondition(period, input)) {
 				resultSearch.add(period);
 			}
 		}

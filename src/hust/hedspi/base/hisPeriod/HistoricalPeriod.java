@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HistoricalPeriod {
-	String name;
-	String year;
-	String content;
-	List<HistoricalChildPeriod> childPeriodList = new ArrayList<HistoricalChildPeriod>();
+	private String name;
+	private String year;
+	private String content;
+	private List<HistoricalChildPeriod> childPeriodList = new ArrayList<HistoricalChildPeriod>();
 	
 	// Constructor
 	public HistoricalPeriod() {}
@@ -51,11 +51,19 @@ public class HistoricalPeriod {
 	}
 
 	// Methods
+	public boolean searchCondition(HistoricalChildPeriod period, String input) {
+		boolean condition1 = period.getName().toLowerCase().contains(input.toLowerCase());
+		boolean condition2 = period.getYear().toLowerCase().contains(input.toLowerCase());
+		boolean condition3 = period.getContent().toLowerCase().contains(input.toLowerCase());
+		
+		return condition1 || condition2 || condition3;  
+	}
+	
 	public List<HistoricalChildPeriod> searchChildPeriod(String input) {
 		List<HistoricalChildPeriod> resultSearch = new ArrayList<HistoricalChildPeriod>();
 		
 		for (HistoricalChildPeriod childPeriod: childPeriodList) {
-			if (childPeriod.getName().toLowerCase().contains(input.toLowerCase())) {
+			if (searchCondition(childPeriod, input)) {
 				resultSearch.add(childPeriod);
 			}
 		}

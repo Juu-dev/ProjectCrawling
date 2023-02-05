@@ -6,11 +6,12 @@ import java.util.List;
 import hust.hedspi.base.hisfigure.HistoricalFigure;
 
 public class CulturalFestival {
-	String name;
-	String date;
-	String location;
-	List<String> historicalFigures  = new ArrayList<String>(); 
-	List<HistoricalFigure> figuresList = new ArrayList<HistoricalFigure>();
+	private String name;
+	private String date;
+	private String location;
+	private List<String> historicalFigures  = new ArrayList<String>(); 
+	private String hisFigList;
+	private List<HistoricalFigure> figuresList = new ArrayList<HistoricalFigure>();
 	
 	// Constructor
 	public CulturalFestival() {}
@@ -82,5 +83,13 @@ public class CulturalFestival {
 
 	public void setFiguresList(List<HistoricalFigure> figuresList) {
 		this.figuresList = figuresList;
+	}
+
+	public String getHisFigList() {
+		return hisFigList;
+	}
+
+	public void setHisFigList(String hisFigList) {
+		this.hisFigList = hisFigList;
 	}
 }

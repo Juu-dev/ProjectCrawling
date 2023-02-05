@@ -16,33 +16,32 @@ import hust.hedspi.base.hisfigure.HistoricalFigure;
 import hust.hedspi.base.hissite.HistoricalSite;
 import hust.hedspi.base.hissite.HistoricalSites;
 import hust.hedspi.crawling.Crawling;
-import hust.hedspi.crawling.dataHisInterface;
+import hust.hedspi.crawling.DataHisInterface;
 import hust.hedspi.crawling.figure.DataHisFigures;
 
-public class DataHisSites implements dataHisInterface {
-	String url = "https://vi.wikipedia.org/wiki/Danh_s%C3%A1ch_Di_t%C3%ADch_qu%E1%BB%91c_gia_Vi%E1%BB%87t_Nam";
-	String query1 = "div.mw-parser-output > h3 > span.mw-headline";
-	String query2 = "div.mw-parser-output > h3 + table > tbody";
+public class DataHisSites extends Crawling implements DataHisInterface {
 	
-	String comp1 = "Lịch sử";
-	String comp2 = "Lịch sử đặc biệt";
-	String comp3 = "Lịch sử văn hóa";
-	
-	HistoricalSites hisVNSites = new HistoricalSites();
+	private HistoricalSites hisVNSites = new HistoricalSites();
 	
 	// Methods
-	// main methods
-	@Override
-	public void crawlingAndSaveToFile(File file) throws Exception {
-		DataHisFigures figuresList = new DataHisFigures();
+	public List<HistoricalSite> getListSite1() {
+		String url = "https://vi.wikipedia.org/wiki/Danh_s%C3%A1ch_Di_t%C3%ADch_qu%E1%BB%91c_gia_Vi%E1%BB%87t_Nam";
+		String query1 = "div.mw-parser-output > h3 > span.mw-headline";
+		String query2 = "div.mw-parser-output > h3 + table > tbody";
 		
-		Crawling data = new Crawling();
+		String comp1 = "Lịch sử";
+		String comp2 = "Lịch sử đặc biệt";
+		String comp3 = "Lịch sử văn hóa";
 		
-		data.connectToWeb(url);
+		List<HistoricalSite> hisSites = new ArrayList<HistoricalSite>();
+		
+//		DataHisFigures figuresList = new DataHisFigures();
+		
+		connectToWeb(url);
 		
 		// crawling data
-		Elements resultQuery1 = data.crawlingData(query1);
-		Elements resultQuery2= data.crawlingData(query2);
+		Elements resultQuery1 = crawlingData(query1);
+		Elements resultQuery2= crawlingData(query2);
 
 		List<String> nameCountryList = new ArrayList<String>();
 		
@@ -51,7 +50,7 @@ public class DataHisSites implements dataHisInterface {
 			nameCountryList.add(resultQuery1.get(i).text());
 		}
 		
-		List<HistoricalFigure> hisFiguresList = figuresList.getAllFigures2();
+//		List<HistoricalFigure> hisFiguresList = figuresList.getAllFigures2();
 		
 		// data sites
 		for (int i=0; i<resultQuery2.size(); i++) {
@@ -102,14 +101,14 @@ public class DataHisSites implements dataHisInterface {
 					
 					if (site.child(0).firstChild().attr("href") != "") {
 							String newUrl = "https://vi.wikipedia.org" + site.child(0).firstChild().attr("href");
-							String query1 = "div.mw-parser-output > p";
-							String query2 = "table.infobox > tbody > tr > td > b > a";
+							String query3 = "div.mw-parser-output > p";
+							String query4 = "table.infobox > tbody > tr > td > b > a";
 							
 							// connect to web
-							data.connectToWeb(newUrl);
+							connectToWeb(newUrl);
 							// crawling data
-							String content = data.crawlingData(query1).text();
-							String hisFigures = data.crawlingData(query2).text();
+							String content = crawlingData(query3).text();
+							String hisFigures = crawlingData(query4).text();
 							
 							if (!(hisFigures.length() == 0) && hisFigures != null) {
 								if (hisFigures.contains(strContain3)) {
@@ -123,25 +122,38 @@ public class DataHisSites implements dataHisInterface {
 							
 							hisSite.setContent(content);
 							hisSite.setHistoricalFigure(hisFiguresExp);
+							hisSite.setHisFigList(String.join(", ", hisFiguresExp));
 					}
 					
 					List<HistoricalFigure> figuresListVN = new ArrayList<HistoricalFigure>();
-					for (String hisFigureExp: hisFiguresExp) {
-						for (HistoricalFigure hisFigure: hisFiguresList ) {
-							if (hisFigureExp.contains(hisFigure.getName())) {
-								figuresListVN.add(hisFigure);
-							}
-						}
-					}
+					
+					// set figures
+//					for (String hisFigureExp: hisFiguresExp) {
+//						for (HistoricalFigure hisFigure: hisFiguresList ) {
+//							if (hisFigureExp.contains(hisFigure.getName())) {
+//								figuresListVN.add(hisFigure);
+//							}
+//						}
+//					}
 					
 					hisSite.setFiguresList(figuresListVN);
 					
-					hisVNSites.addElement(hisSite);
+					hisSites.add(hisSite);
 				}
 			}
 		}
 		
-		
+		return hisSites;
+	}
+
+	public void getListSite2() {
+		hisVNSites.addElement(getListSite1());
+	}
+	
+	// main methods
+	@Override
+	public void crawlingAndSaveToFile(File file) throws Exception {
+		getListSite2();
 		// Write JSON file to the root folder
 		ObjectMapper mapper = new ObjectMapper();
 		try {

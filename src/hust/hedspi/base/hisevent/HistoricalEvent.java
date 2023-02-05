@@ -6,12 +6,14 @@ import java.util.List;
 import hust.hedspi.base.hisfigure.HistoricalFigure;
 
 public class HistoricalEvent {
-	String name;
-	String date;
-	String content;
-	String location;
-	List<String> historicalFigure = new ArrayList<String>();
-	List<HistoricalFigure> figuresList = new ArrayList<HistoricalFigure>();
+	private String name;
+	private String date;
+	private String content;
+	private String location;
+	private String nameDynasty;
+	private List<String> historicalFigure = new ArrayList<String>();
+	private String hisFigList;
+	private List<HistoricalFigure> figuresList = new ArrayList<HistoricalFigure>();
 
 	// Contructor
 	public HistoricalEvent() {}
@@ -21,6 +23,14 @@ public class HistoricalEvent {
 		this.name = name;
 		this.date = date;
 		this.content = content;
+	}
+	
+	public HistoricalEvent(String name, String date, String content, String nameDynasty) {
+		super();
+		this.name = name;
+		this.date = date;
+		this.content = content;
+		this.nameDynasty = nameDynasty;
 	}
 	
 	public HistoricalEvent(String name, String date, String content, String location, List<String> historicalFigure) {
@@ -84,6 +94,22 @@ public class HistoricalEvent {
 		this.historicalFigure = historicalFigure;
 	}
 	
+	public String getNameDynasty() {
+		return nameDynasty;
+	}
+
+	public void setNameDynasty(String nameDynasty) {
+		this.nameDynasty = nameDynasty;
+	}
+
+	public String getHisFigList() {
+		return hisFigList;
+	}
+
+	public void setHisFigList(String hisFigList) {
+		this.hisFigList = hisFigList;
+	}
+
 	public List<HistoricalFigure> getFiguresList() {
 		return figuresList;
 	}

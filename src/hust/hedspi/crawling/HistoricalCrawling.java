@@ -21,40 +21,45 @@ public class HistoricalCrawling {
 		DataHisSites dataHisSites = new DataHisSites();
 		DataHisFigures dataHisFigs = new DataHisFigures();
 		
+		final File fileDynData = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\dynastyData.json");
+		final File fileFesData = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\festivalData.json");
+		final File fileEventData = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\eventData.json");
+		final File fileSiteData = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\siteData.json");
+		final File fileFigData = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\figureData.json");
+		
 		try {
 			// create file .json
-			File fileDyn = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\dataDyn.json");
-			if (!fileDyn.exists()) {
-				fileDyn.createNewFile(); 				
+			if (!fileDynData.exists()) {
+				fileDynData.createNewFile(); 				
 			}
-			File fileFes = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\dataFes.json");
-			if (!fileFes.exists()) {
-				fileFes.createNewFile(); 				
+			
+			if (!fileFesData.exists()) {
+				fileFesData.createNewFile(); 				
 			}
-			File fileEvent = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\dataEvent.json");
-			if (!fileEvent.exists()) {
-				fileEvent.createNewFile(); 				
+			
+			if (!fileEventData.exists()) {
+				fileEventData.createNewFile(); 				
 			}
-			File fileSites = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\dataSites.json");
-			if (!fileSites.exists()) {
-				fileSites.createNewFile(); 				
+			
+			if (!fileSiteData.exists()) {
+				fileSiteData.createNewFile(); 				
 			}
-			File fileFigures = new File("C:\\Users\\PMT_2002\\eclipse-workspace\\ProjectScrawling\\src\\hust\\hedspi\\assets\\dataFigues.json");
-			if (!fileFigures.exists()) {
-				fileFigures.createNewFile(); 				
+			
+			if (!fileFigData.exists()) {
+				fileFigData.createNewFile(); 				
 			}
-				// Historical Dynasty
-				dataHisDyn.crawlingAndSaveToFile(fileDyn);
-				// Historical Figures
-//				dataHisFigs.crawlingAndSaveToFile(fileFigures);
-				// Historical Festivals
-//				dataCulFes.crawlingAndSaveToFile(fileFes);
-				// Historical Events
-//				dataHisEvents.crawlingAndSaveToFile(fileEvent);
-				// Historical Sites
-//				dataHisSites.crawlingAndSaveToFile(fileSites);
-				
-				
+			
+			// Historical Dynasty
+			dataHisDyn.crawlingAndSaveToFile(fileDynData);
+			// Historical Figures
+			dataHisFigs.crawlingAndSaveToFile(fileFigData);
+			// Historical Festivals
+			dataCulFes.crawlingAndSaveToFile(fileFesData);
+			// Historical Events
+			dataHisEvents.crawlingAndSaveToFile(fileEventData);
+			// Historical Sites
+			dataHisSites.crawlingAndSaveToFile(fileSiteData);
+					
 		} catch (JsonGenerationException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {

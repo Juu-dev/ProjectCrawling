@@ -17,20 +17,20 @@ import hust.hedspi.base.culfestival.CulturalFestival;
 import hust.hedspi.base.culfestival.CulturalFestivals;
 import hust.hedspi.base.hisfigure.HistoricalFigure;
 import hust.hedspi.crawling.Crawling;
-import hust.hedspi.crawling.dataHisInterface;
-import hust.hedspi.crawling.figure.DataHisFigures;
+import hust.hedspi.crawling.DataHisInterface;
+//import hust.hedspi.crawling.figure.DataHisFigures;
 
-public class DataCulFestivals implements dataHisInterface {
-	String url = "https://vi.wikipedia.org/wiki/L%E1%BB%85_h%E1%BB%99i_Vi%E1%BB%87t_Nam#Danh_s%C3%A1ch_m%E1%BB%99t_s%E1%BB%91_l%E1%BB%85_h%E1%BB%99i";
-	String query = "table.prettytable.wikitable tr";
+public class DataCulFestivals implements DataHisInterface {
 	
-	// Method
-	@Override
-	public void crawlingAndSaveToFile(File file) throws Exception {
-		DataHisFigures figureList = new DataHisFigures();
+	private CulturalFestivals culVNFestivals  = new CulturalFestivals();
+	
+	public List<CulturalFestival> getListFestival1() {
+		List<CulturalFestival> listCulFestivals = new ArrayList<CulturalFestival>();
 		
-		CulturalFestivals culVNFestivals  = new CulturalFestivals();
+		String url = "https://vi.wikipedia.org/wiki/L%E1%BB%85_h%E1%BB%99i_Vi%E1%BB%87t_Nam#Danh_s%C3%A1ch_m%E1%BB%99t_s%E1%BB%91_l%E1%BB%85_h%E1%BB%99i";
+		String query = "table.prettytable.wikitable tr";
 		
+//		DataHisFigures figureList = new DataHisFigures();
 		Crawling data = new Crawling();
 		
 		data.connectToWeb(url);
@@ -39,7 +39,7 @@ public class DataCulFestivals implements dataHisInterface {
 		// remove header
 		rawTr.remove(0); 
 		
-		List<HistoricalFigure> hisFigures = figureList.getAllFigures2();
+//		List<HistoricalFigure> hisFigures = figureList.getAllFigures2();
 		
 		for (Element tr : rawTr) {
 			String nameFes = tr.child(2).text().trim();
@@ -48,16 +48,32 @@ public class DataCulFestivals implements dataHisInterface {
 			List<String> historicalFigures =  new ArrayList<String>(Arrays.asList(tr.child(4).text().split(",")));
 			List<HistoricalFigure> figuresList = new ArrayList<HistoricalFigure>();
 			
-			for (String figure: historicalFigures) {
-				for (HistoricalFigure hisFigure: hisFigures) {
-					if (figure.contains(hisFigure.getName())) {
-						figuresList.add(hisFigure);
-					}
-				}
-			}
+			// set figures
+//			for (String figure: historicalFigures) {
+//				for (HistoricalFigure hisFigure: hisFigures) {
+//					if (figure.contains(hisFigure.getName())) {
+//						figuresList.add(hisFigure);
+//					}
+//				}
+//			}
 			
-			culVNFestivals.addElement(new CulturalFestival(nameFes, dateFes, locationFes, historicalFigures, figuresList));
+			CulturalFestival culFes = new CulturalFestival(nameFes, dateFes, locationFes, historicalFigures, figuresList);
+			culFes.setHisFigList(String.join(", ", historicalFigures));
+			listCulFestivals.add(culFes);
 		}
+		
+		return listCulFestivals;
+	}
+	
+	public void getListFestival2() {
+		culVNFestivals.addElement(getListFestival1());
+	}
+	
+	// main method
+	@Override
+	public void crawlingAndSaveToFile(File file) throws Exception {
+		
+		getListFestival2();
 		
 		// Write JSON file to the root folder
 		ObjectMapper mapper = new ObjectMapper();

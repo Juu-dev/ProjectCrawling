@@ -6,14 +6,13 @@ import java.util.List;
 import hust.hedspi.base.hisfigure.HistoricalFigure;
 
 public class HistoricalSite {
-	String name;
-	String date;
-	String content;
-	String location;
-	String culturalFestival;
-	List<String> historicalFigure = new ArrayList<String>();
-	List<HistoricalFigure> figuresList = new ArrayList<HistoricalFigure>();
-	String historicalEvents;
+	private String name;
+	private String date;
+	private String content;
+	private String location;
+	private List<String> historicalFigure = new ArrayList<String>();
+	private String hisFigList;
+	private List<HistoricalFigure> figuresList = new ArrayList<HistoricalFigure>();
 	
 	// Contructor
 	public HistoricalSite() {}
@@ -25,14 +24,12 @@ public class HistoricalSite {
 		this.location = location;
 	}
 	
-	public HistoricalSite(String name, String date, String content, String location, String culturalFestival, String historicalEvents) {
+	public HistoricalSite(String name, String date, String content, String location) {
 		super();
 		this.name = name;
 		this.date = date;
 		this.content = content;
 		this.location = location;
-		this.culturalFestival = culturalFestival;
-		this.historicalEvents = historicalEvents;
 	}
 
 	// Getter and setter
@@ -68,28 +65,12 @@ public class HistoricalSite {
 		this.location = location;
 	}
 
-	public String getCulturalFestival() {
-		return culturalFestival;
-	}
-
-	public void setCulturalFestival(String culturalFestival) {
-		this.culturalFestival = culturalFestival;
-	}
-
 	public List<String> getHistoricalFigure() {
 		return historicalFigure;
 	}
 
 	public void setHistoricalFigure(List<String> historicalFigure) {
 		this.historicalFigure = historicalFigure;
-	}
-
-	public String getHistoricalEvents() {
-		return historicalEvents;
-	}
-
-	public void setHistoricalEvents(String historicalEvents) {
-		this.historicalEvents = historicalEvents;
 	}
 	
 	public List<HistoricalFigure> getFiguresList() {
@@ -100,8 +81,11 @@ public class HistoricalSite {
 		this.figuresList = figuresList;
 	}
 
-	// Methods
-	void getData() {
-		
+	public String getHisFigList() {
+		return hisFigList;
+	}
+
+	public void setHisFigList(String hisFigList) {
+		this.hisFigList = hisFigList;
 	}
 }

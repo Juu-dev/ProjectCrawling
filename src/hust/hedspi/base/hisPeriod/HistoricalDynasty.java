@@ -7,14 +7,15 @@ import hust.hedspi.base.hisevent.HistoricalEvent;
 import hust.hedspi.base.hisfigure.HistoricalFigure;
 
 public class HistoricalDynasty {
-	String name;
-	String year;
-	String content;
-	String nameCountry;
-	List<HistoricalEvent> eventList = new ArrayList<HistoricalEvent>();
-    List<String> historicalKings = new ArrayList<String>();
-    List<HistoricalFigure> historicalFigures = new ArrayList<HistoricalFigure>();
-	List<String> historicalSiteList = new ArrayList<String>();
+	private String name;
+	private String year;
+	private String content;
+	private String nameCountry;
+	private List<HistoricalEvent> eventList = new ArrayList<HistoricalEvent>();
+	private List<String> historicalKings;
+	private String hisKingList;
+	private List<HistoricalFigure> historicalFigures = new ArrayList<HistoricalFigure>();
+	private String hisFigList;
 	
 	// Constructor
 	public HistoricalDynasty() {}
@@ -40,12 +41,11 @@ public class HistoricalDynasty {
 		this.nameCountry = nameCountry;
 	}
 
-	public HistoricalDynasty(String name, String year, String content, List<String> historicalSiteList, String nameCountry, List<String> historicalKings) {
+	public HistoricalDynasty(String name, String year, String content, String nameCountry, List<String> historicalKings) {
 		super();
 		this.name = name;
 		this.year = year;
 		this.content = content;
-		this.historicalSiteList = historicalSiteList;
         this.historicalKings = historicalKings;
         this.nameCountry = nameCountry;
 	}
@@ -76,6 +76,14 @@ public class HistoricalDynasty {
 		this.content = content;
 	}
 
+	public String getNameCountry() {
+		return nameCountry;
+	}
+
+	public void setNameCountry(String nameCountry) {
+		this.nameCountry = nameCountry;
+	}
+	
 	public List<String> getHistoricalKings() {
 		return historicalKings;
 	}
@@ -84,24 +92,16 @@ public class HistoricalDynasty {
 		this.historicalKings = historicalKings;
 	}
 
-	public String getNameCountry() {
-		return nameCountry;
-	}
-
-	public void setNameCountry(String nameCountry) {
-		this.nameCountry = nameCountry;
-	}
-
-	public List<String> getHistoricalSiteList() {
-		return historicalSiteList;
-	}
-
-	public void setHistoricalSiteList(List<String> historicalSiteList) {
-		this.historicalSiteList = historicalSiteList;
-	}
-	
 	public List<HistoricalEvent> getEventList() {
 		return eventList;
+	}
+
+	public String getHisKingList() {
+		return hisKingList;
+	}
+
+	public void setHisKingList(String hisKingList) {
+		this.hisKingList = hisKingList;
 	}
 
 	public void setEventList(List<HistoricalEvent> eventList) {
@@ -114,5 +114,13 @@ public class HistoricalDynasty {
 
 	public void setHistoricalFigures(List<HistoricalFigure> historicalFigures) {
 		this.historicalFigures = historicalFigures;
+	}
+
+	public String getHisFigList() {
+		return hisFigList;
+	}
+
+	public void setHisFigList(String hisFigList) {
+		this.hisFigList = hisFigList;
 	}
 }

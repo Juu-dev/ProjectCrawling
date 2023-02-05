@@ -53,9 +53,9 @@
                      </toggleGroup>
                   </RadioMenuItem>
                   <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem2" text="Nhân vật lịch sử" toggleGroup="$LinhVuc" />
-                  <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem3" text="Di tích lịch sử" />
-                  <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem4" text="Triều đại lịch sử" />
-                  <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem5" text="Lễ hội văn hóa" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem3" text="Di tích lịch sử" toggleGroup="$LinhVuc" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem4" text="Triều đại lịch sử" toggleGroup="$LinhVuc" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem5" text="Lễ hội văn hóa" toggleGroup="$LinhVuc" />
                   <RadioMenuItem mnemonicParsing="false" onAction="#onClickMenuItem6" text="Sự kiện lịch sử" toggleGroup="$LinhVuc" />
               </items>
                <HBox.margin>
@@ -160,14 +160,45 @@
                               <TableColumn fx:id="dynNameCol" prefWidth="147.0" text="Tên" />
                               <TableColumn fx:id="dynTimeCol" prefWidth="100.0" text="Thời gian" />
                               <TableColumn fx:id="dynContentCol" prefWidth="160.0" text="Nội dung" />
-                              <TableColumn fx:id="dynKingsCol" prefWidth="160.0" text="Các vị vua" />
-                              <TableColumn fx:id="dynFiguresCol" prefWidth="180.0" text="Nhân vật tiêu biểu" />
+                              <TableColumn fx:id="dynKingsCol" prefWidth="123.99996948242188" text="Các vị vua" />
+                              <TableColumn fx:id="dynFiguresCol" prefWidth="135.20001220703125" text="Nhân vật tiêu biểu" />
+                              <TableColumn fx:id="dynNameCountryCol" prefWidth="132.00006103515625" text="Tên nước" />
                            </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
+            <Tab text="Niên đại lịch sử">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbChildPeriod" prefHeight="159.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn fx:id="cperNameCol" prefWidth="147.0" text="Tên" />
+                              <TableColumn fx:id="cperTimeCol" prefWidth="100.0" text="Thời gian" />
+                              <TableColumn fx:id="cperContentCol" prefWidth="160.0" text="Nội dung" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Thời kì lịch sử">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tbPeriod" prefHeight="159.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn fx:id="perNameCol" prefWidth="147.0" text="Tên" />
+                              <TableColumn fx:id="perTimeCol" prefWidth="100.0" text="Thời gian" />
+                              <TableColumn fx:id="perContentCol" prefWidth="160.0" text="Nội dung" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </bottom>

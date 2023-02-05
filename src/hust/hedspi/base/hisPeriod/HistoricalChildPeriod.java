@@ -85,14 +85,19 @@ public class HistoricalChildPeriod {
 
 	// Methods
 	public boolean searchCondition(HistoricalDynasty dynasty, String input) {
-		boolean condition1 = dynasty.getName().toLowerCase().contains(input.toLowerCase());
-		boolean condition2 = dynasty.getYear().toLowerCase().contains(input.toLowerCase());
-		boolean condition3 = dynasty.getContent().toLowerCase().contains(input.toLowerCase());
-		boolean condition4 = dynasty.getNameCountry().toLowerCase().contains(input.toLowerCase());
-		boolean condition5 = dynasty.getHisKingList().toLowerCase().contains(input.toLowerCase());
-		boolean condition6 = dynasty.getHisFigList().toLowerCase().contains(input.toLowerCase());
-		
-		return condition1 || condition2 || condition3 || condition4 || condition5 || condition6;  
+	    boolean condition = dynasty.getName() != null ? dynasty.getName().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    condition = dynasty.getYear() != null ? dynasty.getYear().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    condition = dynasty.getContent() != null ? dynasty.getContent().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    condition = dynasty.getNameCountry() != null ? dynasty.getNameCountry().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    condition = dynasty.getHisKingList() != null ? dynasty.getHisKingList().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    condition = dynasty.getHisFigList() != null ? dynasty.getHisFigList().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    return false;  
 	}
 	
 	public List<HistoricalDynasty> searchDynasty(String input) {

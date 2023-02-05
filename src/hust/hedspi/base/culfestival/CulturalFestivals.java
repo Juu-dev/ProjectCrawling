@@ -24,13 +24,17 @@ public class CulturalFestivals {
 		culVNFestivals.addAll(cul);
 	}
 	
+	// support search
 	public boolean searchCondition(CulturalFestival festival, String input) {
-		boolean condition1 = festival.getName().toLowerCase().contains(input.toLowerCase());
-		boolean condition2 = festival.getDate().toLowerCase().contains(input.toLowerCase());
-		boolean condition3 = festival.getLocation().toLowerCase().contains(input.toLowerCase());
-		boolean condition4 = festival.getHisFigList().toLowerCase().contains(input.toLowerCase());
-		
-		return condition1 || condition2 || condition3 || condition4;  
+		boolean condition = festival.getName() != null ? festival.getName().toLowerCase().contains(input.toLowerCase()): false;
+		if (condition) return true;
+		condition = festival.getDate() != null ? festival.getDate().toLowerCase().contains(input.toLowerCase()) : false;
+		if (condition) return true;
+		condition = festival.getLocation() != null ? festival.getLocation().toLowerCase().contains(input.toLowerCase()) : false ;
+		if (condition) return true;
+		condition = festival.getHisFigList() != null ? festival.getHisFigList().toLowerCase().contains(input.toLowerCase()) : false;
+		if (condition) return true;
+		return false;  
 	}
 	
 	public List<CulturalFestival> searchFestival (String input) {

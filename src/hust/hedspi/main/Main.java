@@ -8,14 +8,16 @@ public class Main {
 	public static void main(String args[]) {
 		HistoricalCrawling hisCraw = new HistoricalCrawling();
 		
-		try {
-			hisCraw.hisCrawling();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// crawling data
+//		try {
+//			hisCraw.hisCrawling();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
-//		new SearchScreen();
+		// ui
+		new SearchScreen();
 		
 	}
 }

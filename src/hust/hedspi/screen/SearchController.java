@@ -44,9 +44,6 @@ public class SearchController {
     private TableColumn<HistoricalFigure, String> figDynastyCol;
 
     @FXML
-    private TableColumn<HistoricalFigure, String> figEventCol;
-
-    @FXML
     private TableColumn<HistoricalFigure, String> figJobCol;
 
     @FXML
@@ -83,6 +80,9 @@ public class SearchController {
 
     @FXML
     private TableColumn<HistoricalEvent, String> eventLocationCol;
+    
+    @FXML
+    private TableColumn<HistoricalEvent, String> eventDynastyCol;
 
     @FXML
     private TableColumn<HistoricalEvent, String> eventNameCol;
@@ -96,12 +96,6 @@ public class SearchController {
     
     @FXML
     private TableColumn<HistoricalSite, String> siteContentCol;
-
-    @FXML
-    private TableColumn<HistoricalSite, String> siteEventCol;
-
-    @FXML
-    private TableColumn<HistoricalSite, String> siteFestivalCol;
 
     @FXML
     private TableColumn<HistoricalSite, String> siteFigureCol;
@@ -122,7 +116,7 @@ public class SearchController {
     @FXML
     private TableColumn<HistoricalDynasty, String> dynContentCol;
 
-//    @FXML
+    @FXML
     private TableColumn<HistoricalDynasty, String> dynFiguresCol;
 
     @FXML
@@ -370,7 +364,6 @@ public class SearchController {
     	figTimeCol.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("date"));
     	figNameCol.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("name"));
     	figJobCol.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("job"));
-    	figEventCol.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("historicalEvents"));
     	figDynastyCol.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("nameDynasty"));
     	figContentCol.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("content"));
     	
@@ -384,13 +377,12 @@ public class SearchController {
     	eventLocationCol.setCellValueFactory(new PropertyValueFactory<HistoricalEvent, String>("location"));
     	eventFigureCol.setCellValueFactory(new PropertyValueFactory<HistoricalEvent, String>("hisFigList"));
     	eventContentCol.setCellValueFactory(new PropertyValueFactory<HistoricalEvent, String>("content"));
+    	eventDynastyCol.setCellValueFactory(new PropertyValueFactory<HistoricalEvent, String>("nameDynasty"));
     	
     	siteTimeCol.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("date"));
     	siteNameCol.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("name"));
     	siteLocationCol.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("location"));
     	siteFigureCol.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("hisFigList"));
-    	siteFestivalCol.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("culturalFestival"));
-    	siteEventCol.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("historicalEvents"));
     	siteContentCol.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("content"));
     	
     	dynTimeCol.setCellValueFactory(new PropertyValueFactory<HistoricalDynasty, String>("year"));

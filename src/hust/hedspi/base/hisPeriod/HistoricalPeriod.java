@@ -52,11 +52,13 @@ public class HistoricalPeriod {
 
 	// Methods
 	public boolean searchCondition(HistoricalChildPeriod period, String input) {
-		boolean condition1 = period.getName().toLowerCase().contains(input.toLowerCase());
-		boolean condition2 = period.getYear().toLowerCase().contains(input.toLowerCase());
-		boolean condition3 = period.getContent().toLowerCase().contains(input.toLowerCase());
-		
-		return condition1 || condition2 || condition3;  
+	    boolean condition = period.getName() != null ? period.getName().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    condition = period.getYear() != null ? period.getYear().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    condition = period.getContent() != null ? period.getContent().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    return false;
 	}
 	
 	public List<HistoricalChildPeriod> searchChildPeriod(String input) {

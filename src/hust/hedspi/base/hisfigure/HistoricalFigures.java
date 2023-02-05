@@ -24,13 +24,18 @@ public class HistoricalFigures {
 	}
 	
 	public boolean searchCondition(HistoricalFigure figure, String input) {
-		boolean condition1 = figure.getName().toLowerCase().contains(input.toLowerCase());
-		boolean condition2 = figure.getDate().toLowerCase().contains(input.toLowerCase());
-		boolean condition3 = figure.getContent().toLowerCase().contains(input.toLowerCase());
-		boolean condition4 = figure.getNameDynasty().toLowerCase().contains(input.toLowerCase());
-		boolean condition5 = figure.getJob().toLowerCase().contains(input.toLowerCase());
+		boolean condition = figure.getName() != null ? figure.getName().toLowerCase().contains(input.toLowerCase()) : false;
+		if (condition) return true;
+		condition = figure.getDate() != null ? figure.getDate().toLowerCase().contains(input.toLowerCase()) : false;
+		if (condition) return true;
+		condition = figure.getContent() != null ? figure.getContent().toLowerCase().contains(input.toLowerCase()) : false;
+		if (condition) return true;
+		condition = figure.getNameDynasty() != null ? figure.getNameDynasty().toLowerCase().contains(input.toLowerCase()) : false;
+		if (condition) return true;
+		condition = figure.getJob() != null ? figure.getJob().toLowerCase().contains(input.toLowerCase()) : false;
+		if (condition) return true;
 		
-		return condition1 || condition2 || condition3 || condition4 || condition5;  
+		return false;
 	}
 	
 	public List<HistoricalFigure> searchFigure(String input) {

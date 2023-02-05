@@ -87,12 +87,11 @@
                      <children>
                         <TableView fx:id="tableFig" prefHeight="160.0" prefWidth="800.0">
                            <columns>
-                              <TableColumn fx:id="figNameCol" prefWidth="140.0" text="Tên" />
-                              <TableColumn fx:id="figTimeCol" prefWidth="110.0" text="Thời gian" />
-                              <TableColumn fx:id="figContentCol" prefWidth="170.0" text="Nội dung" />
-                              <TableColumn fx:id="figJobCol" prefWidth="100.0" text="Nghề nghiệp" />
-                              <TableColumn fx:id="figDynastyCol" prefWidth="90.0" text="Triều đại" />
-                              <TableColumn fx:id="figEventCol" prefWidth="120.0" text="Sự kiện lịch sử" />
+                              <TableColumn fx:id="figNameCol" prefWidth="164.00000607967377" text="Tên" />
+                              <TableColumn fx:id="figTimeCol" prefWidth="98.39996337890625" text="Thời gian" />
+                              <TableColumn fx:id="figContentCol" prefWidth="208.0" text="Nội dung" />
+                              <TableColumn fx:id="figJobCol" prefWidth="111.99996948242188" text="Nghề nghiệp" />
+                              <TableColumn fx:id="figDynastyCol" prefWidth="216.00006103515625" text="Triều đại" />
                            </columns>
                         </TableView>
                      </children>
@@ -105,10 +104,10 @@
                      <children>
                         <TableView fx:id="tbFest" prefHeight="159.0" prefWidth="800.0">
                            <columns>
-                              <TableColumn fx:id="festNameCol" prefWidth="170.0" text="Tên" />
-                              <TableColumn fx:id="festTimeCol" prefWidth="130.0" text="Thời gian" />
-                              <TableColumn fx:id="festLocationCol" prefWidth="180.0" text="Vị trí" />
-                              <TableColumn fx:id="festFigureCol" prefWidth="160.0" text="Nhân vật lịch sử" />
+                              <TableColumn fx:id="festNameCol" prefWidth="237.59998166561127" text="Tên" />
+                              <TableColumn fx:id="festTimeCol" prefWidth="131.20001220703125" text="Thời gian" />
+                              <TableColumn fx:id="festLocationCol" prefWidth="171.99996948242188" text="Vị trí" />
+                              <TableColumn fx:id="festFigureCol" prefWidth="259.99993896484375" text="Nhân vật lịch sử" />
                            </columns>
                         </TableView>
                      </children>
@@ -126,6 +125,7 @@
                               <TableColumn fx:id="eventContentCol" prefWidth="160.0" text="Nội dung" />
                               <TableColumn fx:id="eventLocationCol" prefWidth="120.0" text="Vị trí" />
                               <TableColumn fx:id="eventFigureCol" prefWidth="160.0" text="Nhân vật lịch sử" />
+                              <TableColumn fx:id="eventDynastyCol" prefWidth="119.20001220703125" text="Triều đại" />
                            </columns>
                         </TableView>
                      </children>
@@ -138,13 +138,11 @@
                      <children>
                         <TableView fx:id="tbSite" prefHeight="158.0" prefWidth="800.0">
                           <columns>
-                            <TableColumn fx:id="siteNameCol" prefWidth="120.0" text="Tên" />
-                            <TableColumn fx:id="siteTimeCol" prefWidth="85.0" text="Thời gian" />
-                              <TableColumn fx:id="siteContentCol" prefWidth="140.0" text="Nội dung" />
-                              <TableColumn fx:id="siteLocationCol" prefWidth="100.0" text="Vị trí" />
-                              <TableColumn fx:id="siteFestivalCol" prefWidth="90.0" text="Lễ hội" />
-                              <TableColumn fx:id="siteFigureCol" prefWidth="120.0" text="Nhân vật lịch sử" />
-                              <TableColumn fx:id="siteEventCol" prefWidth="120.0" text="Sự kiện lịch sử" />
+                            <TableColumn fx:id="siteNameCol" prefWidth="162.40003049373627" text="Tên" />
+                            <TableColumn fx:id="siteTimeCol" prefWidth="102.39996337890625" text="Thời gian" />
+                              <TableColumn fx:id="siteContentCol" prefWidth="221.5999755859375" text="Nội dung" />
+                              <TableColumn fx:id="siteLocationCol" minWidth="0.0" prefWidth="121.60000610351562" text="Vị trí" />
+                              <TableColumn fx:id="siteFigureCol" prefWidth="192.79998779296875" text="Nhân vật lịch sử" />
                           </columns>
                         </TableView>
                      </children>
@@ -175,9 +173,9 @@
                      <children>
                         <TableView fx:id="tbChildPeriod" prefHeight="159.0" prefWidth="800.0">
                            <columns>
-                              <TableColumn fx:id="cperNameCol" prefWidth="147.0" text="Tên" />
-                              <TableColumn fx:id="cperTimeCol" prefWidth="100.0" text="Thời gian" />
-                              <TableColumn fx:id="cperContentCol" prefWidth="160.0" text="Nội dung" />
+                              <TableColumn fx:id="cperNameCol" prefWidth="218.40003049373627" text="Tên" />
+                              <TableColumn fx:id="cperTimeCol" prefWidth="158.39996337890625" text="Thời gian" />
+                              <TableColumn fx:id="cperContentCol" prefWidth="422.3999328613281" text="Nội dung" />
                            </columns>
                         </TableView>
                      </children>
@@ -190,9 +188,9 @@
                      <children>
                         <TableView fx:id="tbPeriod" prefHeight="159.0" prefWidth="800.0">
                            <columns>
-                              <TableColumn fx:id="perNameCol" prefWidth="147.0" text="Tên" />
-                              <TableColumn fx:id="perTimeCol" prefWidth="100.0" text="Thời gian" />
-                              <TableColumn fx:id="perContentCol" prefWidth="160.0" text="Nội dung" />
+                              <TableColumn fx:id="perNameCol" prefWidth="216.00000607967377" text="Tên" />
+                              <TableColumn fx:id="perTimeCol" prefWidth="160.0" text="Thời gian" />
+                              <TableColumn fx:id="perContentCol" prefWidth="422.3999938964844" text="Nội dung" />
                            </columns>
                         </TableView>
                      </children>

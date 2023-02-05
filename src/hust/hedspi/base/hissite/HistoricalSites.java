@@ -24,13 +24,17 @@ public class HistoricalSites {
 	}
 	
 	public boolean searchCondition(HistoricalSite site, String input) {
-		boolean condition1 = site.getName().toLowerCase().contains(input.toLowerCase());
-		boolean condition2 = site.getDate().toLowerCase().contains(input.toLowerCase());
-		boolean condition3 = site.getContent().toLowerCase().contains(input.toLowerCase());
-		boolean condition4 = site.getLocation().toLowerCase().contains(input.toLowerCase());
-		boolean condition5 = site.getHisFigList().toLowerCase().contains(input.toLowerCase());
-		
-		return condition1 || condition2 || condition3 || condition4 || condition5;  
+	    boolean condition = site.getName() != null ? site.getName().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    condition = site.getDate() != null ? site.getDate().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    condition = site.getContent() != null ? site.getContent().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    condition = site.getLocation() != null ? site.getLocation().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    condition = site.getHisFigList() != null ? site.getHisFigList().toLowerCase().contains(input.toLowerCase()) : false;
+	    if (condition) return true;
+	    return false;  
 	}
 	
 	public List<HistoricalSite> searchSite (String input) {

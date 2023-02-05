@@ -25,14 +25,19 @@ public class HistoricalEvents {
 	
 	// Methods
 	public boolean searchCondition(HistoricalEvent event, String input) {
-		boolean condition1 = event.getName().toLowerCase().contains(input.toLowerCase());
-		boolean condition2 = event.getDate().toLowerCase().contains(input.toLowerCase());
-		boolean condition3 = event.getContent().toLowerCase().contains(input.toLowerCase());
-		boolean condition4 = event.getLocation().toLowerCase().contains(input.toLowerCase());
-		boolean condition5 = event.getNameDynasty().toLowerCase().contains(input.toLowerCase());
-		boolean condition6 = event.getHisFigList().toLowerCase().contains(input.toLowerCase());
-		
-		return condition1 || condition2 || condition3 || condition4 || condition5 || condition6;  
+		boolean condition = event.getName().toLowerCase().contains(input.toLowerCase());
+		if (condition) return true;
+		condition = event.getDate() != null ? event.getDate().toLowerCase().contains(input.toLowerCase()) : false;
+		if (condition) return true;
+		condition = event.getContent() != null ? event.getContent().toLowerCase().contains(input.toLowerCase()) : false;
+		if (condition) return true;
+		condition = event.getLocation() != null ? event.getLocation().toLowerCase().contains(input.toLowerCase()) : false;
+		if (condition) return true;
+		condition = event.getNameDynasty() != null ? event.getNameDynasty().toLowerCase().contains(input.toLowerCase()) : false;
+		if (condition) return true;
+		condition = event.getHisFigList() != null ? event.getHisFigList().toLowerCase().contains(input.toLowerCase()) : false;
+		if (condition) return true;
+		return false;
 	}
 	
 	public List<HistoricalEvent> searchEvent (String input) {
